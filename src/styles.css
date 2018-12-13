@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Nexa Bold';
+    src: url('./assets/fonts/NexaBold.otf');
+}
+@font-face {
+    font-family: 'Nexa Light';
+    src: url('./assets/fonts/NexaLight.otf');
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

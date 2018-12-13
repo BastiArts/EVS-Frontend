@@ -1,0 +1,48 @@
+#wrapper{
+    width: 100%;
+    height:100%;
+    background-image: url("../../../assets/bg/homepage.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#overlay{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    top:0;
+    background: -moz-linear-gradient(-45deg,  rgba(84,135,229,0.25) 0%, rgba(174,0,224,0.25) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg,  rgba(84,135,229,0.25) 0%,rgba(174,0,224,0.25) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg,  rgba(84,135,229,0.25) 0%,rgba(174,0,224,0.25) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#705487e5', endColorstr='#70ae00e0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+#introText{
+    color:white;
+    width:17vw;
+    height: 7vw;
+    margin-top: 18%;
+    margin-left: 20px;
+}
+.bold{
+    font-family: 'Nexa Bold';
+}
+.light{
+    font-family: 'Nexa Light';
+}
+#title{
+    font-size: 92px;
+    margin:0;
+    padding:0;
+    line-height: 72px;
+}
+sub{
+    position: absolute;
+    margin-top: -2px;
+    word-spacing: 10px;
+}
+login{
+    position: absolute;
+    width:350px;
+    height:100%;
+    top:0;
+    right:0;
+}
