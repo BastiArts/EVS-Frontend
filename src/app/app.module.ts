@@ -10,18 +10,24 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/homepage/login/login.component';
 import {AuthService} from "../../services/services/auth.service";
+import {MaterialModule} from "./modules/material/material.module";
+import {FormsModule} from "@angular/forms";
+import { RetourInfoComponent } from './components/retour-info/retour-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    RetourInfoComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MaterialModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AuthService],

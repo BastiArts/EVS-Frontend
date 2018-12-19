@@ -2,5 +2,33 @@
     position: absolute;
     height: 100%;
     width:100%;
-    background-color: rgba(255,255,255,0.4);
+    background-color: rgba(0,0,0,0.4);
+    color: white;
+}
+#loginPanel{
+    width:100%;
+    height: auto;
+    text-align: center;
+    align-items: center;
+    margin-top: 25%;
+}
+.formfield:not(:first-of-type){
+    margin-top: 20px;
+}
+input{
+    width: calc(100% - 40px);
+    padding-left: 10px;
+    height: 40px;
+    border-radius: 5px;
+    border:none;
+}
+input:nth-of-type(2){
+    margin-top: 20px;
+}
+.label{
+    text-align: left;
+    color: #c1c1c1;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    font-size: medium;
 }
