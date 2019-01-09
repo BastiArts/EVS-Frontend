@@ -13,6 +13,8 @@ import {AuthService} from "../../services/services/auth.service";
 import {MaterialModule} from "./modules/material/material.module";
 import {FormsModule} from "@angular/forms";
 import { RetourInfoComponent } from './components/retour-info/retour-info.component';
+import { StudentsComponent } from './components/dashboard/students/students.component';
+import { EquipmentComponent } from './components/dashboard/equipment/equipment.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { RetourInfoComponent } from './components/retour-info/retour-info.compon
     HomepageComponent,
     DashboardComponent,
     LoginComponent,
-    RetourInfoComponent
+    RetourInfoComponent,
+    StudentsComponent,
+    EquipmentComponent
   ],
   imports: [
     BrowserModule,

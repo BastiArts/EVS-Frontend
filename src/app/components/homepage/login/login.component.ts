@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../../app.user";
 import {MatProgressButtonOptions} from "mat-progress-buttons";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'login',
@@ -23,15 +24,17 @@ export class LoginComponent implements OnInit {
         mode: 'indeterminate',
     };
 
-    constructor() {
+    constructor(private router: Router) {
     }
 
     login() {
         if (this.currentUser.username != "") {
+            localStorage.setItem("loggedIn", "true");
             this.btnOpts.active = true;
             setTimeout(() => {
                 this.btnOpts.active = false;
-                alert("Logged in");
+                console.log("Logged in");
+                this.router.navigate(["dashboard"]);
             }, 1000);
 
         }
