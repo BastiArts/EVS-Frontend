@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+    // Defines the Base-URL of the REST-Server
+    apiUrl: 'http://192.168.137.53:8080/rest/evs/'
 };
 
 /*
