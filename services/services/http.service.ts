@@ -11,7 +11,7 @@ export class HttpService {
         this.http = http;
     }
     // Login Method which is called in the login.component.ts login() Method
-    login(){
-        return this.http.get(environment.apiUrl+'login?user=it150160&pwd=mypwd');
+    login(username:String, password:String){
+        return this.http.get(environment.apiUrl+'login?user='+username+'&pwd='+password);
     }
 }

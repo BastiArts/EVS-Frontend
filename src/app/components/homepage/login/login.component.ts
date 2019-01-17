@@ -32,12 +32,19 @@ export class LoginComponent implements OnInit {
     constructor(private router: Router, private http:HttpService) {
     }
     // Login Method
-    login() {
+    login(user:String,password:String) {
             // Receive asynchronously Data from the Server
             // In this case the Result should be an User-Object
-         this.http.login().subscribe(res => {
-            this.currentUser = res;
-            alert(this.currentUser.username)
+        this.btnOpts.active = true;
+
+         this.http.login(user,password).subscribe(res => {
+           // this.currentUser = res;
+            alert(res);
+             setTimeout(() => {
+                 this.btnOpts.active = false;
+                 console.log("Logged in");
+                 //this.router.navigate(["dashboard"]);
+             }, 1000);
          });
 
 /*

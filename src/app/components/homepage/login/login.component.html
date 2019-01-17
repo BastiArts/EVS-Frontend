@@ -10,7 +10,7 @@
             <input type = "password" [(ngModel)] = "currentUser.password">
         </div>
         <div class = "formfield">
-            <mat-spinner-button (click)="login()" [options]="btnOpts"></mat-spinner-button>
+            <mat-spinner-button (click)="login(currentUser.username,currentUser.password)" [options]="btnOpts"></mat-spinner-button>
            <!-- <button mat-flat-button (click)="login()">Login</button> -->
 
         </div>
