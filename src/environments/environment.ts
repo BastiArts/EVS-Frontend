@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
     // Defines the Base-URL of the REST-Server
-    apiUrl: 'http://192.168.137.53:8080/rest/evs/'
+    apiUrl: 'http://localhost:8080/rest/evs/' //192.168.137.53
 };
 
 /*

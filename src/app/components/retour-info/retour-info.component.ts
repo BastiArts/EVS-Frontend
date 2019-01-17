@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import {DataService} from "../../../../services/services/data.service";
 
 @Component({
   selector: 'retour-info',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RetourInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataservice:DataService) { }
 
   ngOnInit() {
   }

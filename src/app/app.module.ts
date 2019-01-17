@@ -17,6 +17,7 @@ import {StudentsComponent} from './components/dashboard/students/students.compon
 import {EquipmentComponent} from './components/dashboard/equipment/equipment.component';
 import {HttpService} from "../../services/services/http.service";
 import {HttpClientModule} from '@angular/common/http';
+import {DataService} from "../../services/services/data.service";
 
 @NgModule({
     declarations: [
@@ -37,7 +38,7 @@ import {HttpClientModule} from '@angular/common/http';
         MaterialModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
     ],
-    providers: [AuthService, HttpService],
+    providers: [AuthService, HttpService, DataService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Nexa Bold';
+    src: url('../../../assets/Fonts/NexaBold.otf');
+}
+@font-face {
+    font-family: 'Nexa Light';
+    src: url('../../../assets/Fonts/NexaLight.otf');
+}
+@font-face {
+    font-family: 'Gilroy Light';
+    src: url('../../../assets/Fonts/gilroy-light.otf');
+}
+
+
+
+.box{
+    background:rgba(0,0,0,0.5);
+
+    width:90%;
+    height:4.5em;
+    border:solid black 1px;
+    border-radius:5px;
+}
+
+#box1{
+    position:absolute;
+    right:1em;
+    top:25em;
+}
+
+#box2{
+    position:absolute;
+    right:1em;
+    top:30em;
+}
+
+
+#box3{
+    position:absolute;
+    right:1em;
+    top:35em;
+}
+
+a{
+    color:white;
+    opacity:0.5;
+    font-family: 'Nexa Light';
+    font-size: 80%;
+    position: relative;
+    left:5%;
+    top:8%;
+
+}
+
+.coloredTxt{
+    color:white;
+    opacity:1;
+    font-family: 'Nexa Light';
+}
+
+.underline{
+    font-family:'Gilroy Light';
+    text-decoration:underline;
+}
+
