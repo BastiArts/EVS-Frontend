@@ -3,7 +3,6 @@ import {User} from "../../../app.user";
 import {MatProgressButtonOptions} from "mat-progress-buttons";
 import {Router} from "@angular/router";
 import {HttpService} from "../../../../../services/services/http.service";
-import {Person} from "../../../app.person";
 
 @Component({
     selector: 'login',
@@ -13,7 +12,7 @@ import {Person} from "../../../app.person";
 export class LoginComponent implements OnInit {
     // Person Objects for validating purposes
     currentUser: User = new User();
-    testP:Person = new Person();
+    tmppwd:String = "";
 
     // Settings for the Login spinner
     btnOpts: MatProgressButtonOptions = {
@@ -38,26 +37,11 @@ export class LoginComponent implements OnInit {
         this.btnOpts.active = true;
 
          this.http.login(user,password).subscribe(res => {
-           // this.currentUser = res;
-            alert(res);
-             setTimeout(() => {
-                 this.btnOpts.active = false;
-                 console.log("Logged in");
-                 //this.router.navigate(["dashboard"]);
-             }, 1000);
+             if(res === true){
+                 localStorage.setItem("loggedIn", "true");
+                 this.router.navigate(["dashboard"]);
+             }
          });
-
-/*
-        if (this.currentUser.username != "") {
-            localStorage.setItem("loggedIn", "true");
-            this.btnOpts.active = true;
-            setTimeout(() => {
-                this.btnOpts.active = false;
-                console.log("Logged in");
-                this.router.navigate(["dashboard"]);
-            }, 1000);
-
-        }*/
 
     }
 

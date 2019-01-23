@@ -1,0 +1,19 @@
+.sidenav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+}
+#avatarbox{
+    background-color: transparent!important;
+    -webkit-border-radius: 0!important;
+    -moz-border-radius: 0!important;
+    border-radius: 0!important;
+}
+.avatar {
+    background-image: url('../../../assets/avatars/manuPB.jpg');
+    background-size: cover;
+    width: 200px;
+    height:200px;
+    margin:0 auto;
+}

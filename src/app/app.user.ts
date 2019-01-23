@@ -1,3 +1,3 @@
 export class User{
-    constructor(public username:String = "", public password:String = ""){}
+    constructor(public username:String = ""){}
 }

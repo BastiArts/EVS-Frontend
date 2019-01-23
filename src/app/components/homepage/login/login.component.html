@@ -7,10 +7,10 @@
         </div>
         <div class = "formfield">
             <div class = "label">Password</div>
-            <input type = "password" [(ngModel)] = "currentUser.password">
+            <input type = "password" [(ngModel)] = "tmppwd">
         </div>
         <div class = "formfield">
-            <mat-spinner-button (click)="login(currentUser.username,currentUser.password)" [options]="btnOpts"></mat-spinner-button>
+            <mat-spinner-button (click)="login(currentUser.username,tmppwd)" [options]="btnOpts"></mat-spinner-button>
            <!-- <button mat-flat-button (click)="login()">Login</button> -->
 
         </div>

@@ -13,11 +13,15 @@ import {AuthService} from "../../services/services/auth.service";
 import {MaterialModule} from "./modules/material/material.module";
 import {FormsModule} from "@angular/forms";
 import {RetourInfoComponent} from './components/retour-info/retour-info.component';
-import {StudentsComponent} from './components/dashboard/students/students.component';
 import {EquipmentComponent} from './components/dashboard/equipment/equipment.component';
 import {HttpService} from "../../services/services/http.service";
 import {HttpClientModule} from '@angular/common/http';
 import {DataService} from "../../services/services/data.service";
+import { StudentsBoardComponent } from './components/dashboard/students-board/students-board.component';
+import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { DefaultDashboardComponent } from './components/dashboard/default-dashboard/default-dashboard.component';
 
 @NgModule({
     declarations: [
@@ -26,8 +30,10 @@ import {DataService} from "../../services/services/data.service";
         DashboardComponent,
         LoginComponent,
         RetourInfoComponent,
-        StudentsComponent,
-        EquipmentComponent
+        EquipmentComponent,
+        StudentsBoardComponent,
+        SidebarComponent,
+        DefaultDashboardComponent
     ],
     imports: [
         BrowserModule,
@@ -36,7 +42,13 @@ import {DataService} from "../../services/services/data.service";
         AppRoutingModule,
         BrowserAnimationsModule,
         MaterialModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
+        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule
     ],
     providers: [AuthService, HttpService, DataService],
     bootstrap: [AppComponent]

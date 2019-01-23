@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -8,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
+    if(localStorage.getItem("loggedIn").localeCompare('true')==0){
+      this.router.navigate(["dashboard"]);
+    }
   }
 
 }

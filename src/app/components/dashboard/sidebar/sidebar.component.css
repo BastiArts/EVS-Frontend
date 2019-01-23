@@ -1,0 +1,57 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 300px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+#avatarbox{
+  background-color: transparent!important;
+  -webkit-border-radius: 0!important;
+  -moz-border-radius: 0!important;
+  border-radius: 0!important;
+}
+.avatar {
+  background-image: url('../../../../assets/avatars/manuPB.jpg');
+  background-size: cover;
+  width: 200px;
+  height:200px;
+  margin:0 auto;
+}
+#studentsinfo{
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+#actions{
+  width: 100%;
+  display:flex;
+}
+mat-card-actions{
+  margin:0 auto;
+}
+mat-sidenav-content{
+  width: 100%!important;
+}
+a mat-icon{
+  margin-right: 30px;
+}
+.active{
+  color: red;
+}
+.mat-card{
+  -webkit-border-radius: 0!important;
+  -moz-border-radius: 0!important;
+  border-radius: 0!important;
+}
