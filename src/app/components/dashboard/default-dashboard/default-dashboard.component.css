@@ -1,4 +1,30 @@
-.wrapper{
-    height: 100vh;
-    width:100%;
+.grid-container {
+  margin: 20px;
+  max-width: calc(100% - 340px);
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+@media screen and (max-width: 599px){
+  .grid-container{
+    max-width: 100%;
+  }
+}
+.mat-card{
+  overflow-y:auto;
 }

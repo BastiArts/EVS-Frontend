@@ -10,20 +10,28 @@ export class DataService {
     {
       name: "Dashboard",
       icon: "dashboard",
-      route: "/"
+      route: "/",
+      action: ""
     },
     {
       name: "Meine Geräte",
-      icon: "work",
-      route: "equipment"
+      icon: "assignment",
+      route: "equipment",
+      action: ""
     },
     {
       name: "Ausleihen",
       icon: "shopping_cart",
-      route: "leihen"
+      route: "leihen",
+      action: ""
+    },
+    {
+      name: "Logout",
+      icon: "logout",
+      route: "logout",
+      action: "openLogout()"
     }
   ];
-
   // Return Info Data
   equipmentName1: String = "Zoom Audiogerät";
   returnDate1: String = "20.03.2019";

@@ -6,6 +6,7 @@ import {AuthService} from "../../services/services/auth.service";
 import {EquipmentComponent} from "./components/dashboard/equipment/equipment.component";
 import {StudentsBoardComponent} from "./components/dashboard/students-board/students-board.component";
 import {DefaultDashboardComponent} from "./components/dashboard/default-dashboard/default-dashboard.component";
+import {LogoutComponent} from "./components/logout/logout.component";
 
 // Contains all the Routes, which can be navigated to
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
             {path: '', component: DefaultDashboardComponent},
             {path: 'students', component: StudentsBoardComponent},
             {path: 'equipment', component: EquipmentComponent},
+            {path: 'logout', component: LogoutComponent},
             {path: '**', redirectTo: 'dashboard'}
         ]},
     {path: 'home', component: HomepageComponent},

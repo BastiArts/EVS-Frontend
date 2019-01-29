@@ -20,8 +20,10 @@ import {DataService} from "../../services/services/data.service";
 import { StudentsBoardComponent } from './components/dashboard/students-board/students-board.component';
 import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
 import { DefaultDashboardComponent } from './components/dashboard/default-dashboard/default-dashboard.component';
+import { EquipmentPreviewComponent } from './components/dashboard/equipment-preview/equipment-preview.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +35,9 @@ import { DefaultDashboardComponent } from './components/dashboard/default-dashbo
         EquipmentComponent,
         StudentsBoardComponent,
         SidebarComponent,
-        DefaultDashboardComponent
+        DefaultDashboardComponent,
+        EquipmentPreviewComponent,
+        LogoutComponent
     ],
     imports: [
         BrowserModule,
@@ -48,7 +52,10 @@ import { DefaultDashboardComponent } from './components/dashboard/default-dashbo
         MatButtonModule,
         MatSidenavModule,
         MatIconModule,
-        MatListModule
+        MatListModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule
     ],
     providers: [AuthService, HttpService, DataService],
     bootstrap: [AppComponent]
