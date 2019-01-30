@@ -12,6 +12,7 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit() {
   }
+
   onCancel():void{
     this.router.navigate(["dashboard"]);
   }

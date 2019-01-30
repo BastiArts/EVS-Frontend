@@ -41,5 +41,6 @@ export class DataService {
 
   equipmentName3: String = "Sony Film Kamera P50";
   returnDate3: String = "15.02.2019";
+
   constructor() {}
 }
