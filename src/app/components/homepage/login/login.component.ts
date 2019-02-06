@@ -40,6 +40,9 @@ export class LoginComponent implements OnInit {
              if(res === true){
                  localStorage.setItem("loggedIn", "true");
                  this.router.navigate(["dashboard"]);
+             }else{
+                 this.btnOpts.active = false;
+                 alert("Invalid credentials");
              }
          });
 

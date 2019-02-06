@@ -14,8 +14,8 @@ export class DefaultDashboardComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Meine Geräte', cols: 2, rows: 1, content: "hi" },
-          { title: 'Verfügbares Equipment', cols: 2, rows: 1, content: "hi" },
+          { title: 'Meine Geräte', cols: 2, rows: 1},
+          { title: 'Verfügbares Equipment', cols: 2, rows: 1},
           { title: 'Lehrer', cols: 2, rows: 1 }
         ];
       }

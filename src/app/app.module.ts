@@ -24,6 +24,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { DefaultDashboardComponent } from './components/dashboard/default-dashboard/default-dashboard.component';
 import { EquipmentPreviewComponent } from './components/dashboard/equipment-preview/equipment-preview.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ProfileComponent } from './components/dashboard/profile/profile.component';
+import { SettingsComponent } from './components/dashboard/settings/settings.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +39,9 @@ import { LogoutComponent } from './components/logout/logout.component';
         SidebarComponent,
         DefaultDashboardComponent,
         EquipmentPreviewComponent,
-        LogoutComponent
+        LogoutComponent,
+        ProfileComponent,
+        SettingsComponent
     ],
     imports: [
         BrowserModule,

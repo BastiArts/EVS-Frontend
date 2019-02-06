@@ -10,26 +10,22 @@ export class DataService {
     {
       name: "Dashboard",
       icon: "dashboard",
-      route: "/",
-      action: ""
+      route: "/"
     },
     {
       name: "Meine Geräte",
       icon: "assignment",
-      route: "equipment",
-      action: ""
+      route: "equipment"
     },
     {
       name: "Ausleihen",
       icon: "shopping_cart",
-      route: "leihen",
-      action: ""
+      route: "leihen"
     },
     {
       name: "Logout",
       icon: "logout",
-      route: "logout",
-      action: "openLogout()"
+      route: "logout"
     }
   ];
   // Return Info Data

@@ -6,7 +6,9 @@ import {AuthService} from "../../services/services/auth.service";
 import {EquipmentComponent} from "./components/dashboard/equipment/equipment.component";
 import {StudentsBoardComponent} from "./components/dashboard/students-board/students-board.component";
 import {DefaultDashboardComponent} from "./components/dashboard/default-dashboard/default-dashboard.component";
+import {ProfileComponent} from "./components/dashboard/profile/profile.component";
 import {LogoutComponent} from "./components/logout/logout.component";
+import {SettingsComponent} from "./components/dashboard/settings/settings.component";
 
 // Contains all the Routes, which can be navigated to
 const routes: Routes = [
@@ -18,6 +20,8 @@ const routes: Routes = [
             {path: 'students', component: StudentsBoardComponent},
             {path: 'equipment', component: EquipmentComponent},
             {path: 'logout', component: LogoutComponent},
+            {path: 'profil', component: ProfileComponent},
+            {path: 'settings', component: SettingsComponent},
             {path: '**', redirectTo: 'dashboard'}
         ]},
     {path: 'home', component: HomepageComponent},

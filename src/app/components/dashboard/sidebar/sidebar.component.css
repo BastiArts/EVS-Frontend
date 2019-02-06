@@ -48,7 +48,7 @@ a mat-icon{
   margin-right: 30px;
 }
 .active{
-  color: red;
+  color: rgb(63, 81, 181);
 }
 .mat-card{
   -webkit-border-radius: 0!important;
