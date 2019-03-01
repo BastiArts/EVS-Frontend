@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../../app.user";
-import {MatProgressButtonOptions} from "mat-progress-buttons";
-import {Router} from "@angular/router";
-import {HttpService} from "../../../../../services/services/http.service";
+import {User} from '../../../app.user';
+import {MatProgressButtonOptions} from 'mat-progress-buttons';
+import {Router} from '@angular/router';
+import {HttpService} from '../../../../../services/services/http.service';
+import {DataService} from '../../../../../services/services/data.service';
 
 @Component({
     selector: 'login',
@@ -12,7 +13,7 @@ import {HttpService} from "../../../../../services/services/http.service";
 export class LoginComponent implements OnInit {
     // Person Objects for validating purposes
     currentUser: User = new User();
-    tmppwd:String = "";
+    tmppwd: String = '';
 
     // Settings for the Login spinner
     btnOpts: MatProgressButtonOptions = {
@@ -22,29 +23,38 @@ export class LoginComponent implements OnInit {
         raised: true,
         stroked: false,
         buttonColor: '',
-        spinnerColor: 'primary', //accent
+        spinnerColor: 'primary', // accent
         fullWidth: false,
         disabled: false,
         mode: 'indeterminate',
     };
+
     // Injecting the Modules and Services
-    constructor(private router: Router, private http:HttpService) {
+    constructor(private router: Router, private http: HttpService, private dataservice: DataService) {
     }
+
     // Login Method
-    login(user:String,password:String) {
-            // Receive asynchronously Data from the Server
-            // In this case the Result should be an User-Object
+    login(user: String, password: String) {
+        // Receive asynchronously Data from the Server
+        // In this case the Result should be an User-Object
         this.btnOpts.active = true;
 
-         this.http.login(user,password).subscribe(res => {
-             if(res === true){
-                 localStorage.setItem("loggedIn", "true");
-                 this.router.navigate(["dashboard"]);
-             }else{
-                 this.btnOpts.active = false;
-                 alert("Invalid credentials");
-             }
-         });
+        this.http.login(user, password).subscribe(res => {
+            if (Object.entries(res).length !== 0) {
+                localStorage.setItem('loggedIn', 'true');
+                this.dataservice.sessionUser = res;
+                localStorage.setItem('user', JSON.stringify(this.dataservice.sessionUser));
+                if (this.dataservice.sessionUser.picturePath.toString() === '') {
+                    this.dataservice.sessionUser.picturePath = '../../../../assets/avatars/default.jpg';
+                } else {
+                    this.dataservice.sessionUser.picturePath = '../../../../assets/avatars/' + this.dataservice.sessionUser.picturePath;
+                }
+                this.router.navigate(['dashboard']);
+            } else {
+                this.btnOpts.active = false;
+                alert('Invalid credentials');
+            }
+        });
 
     }
 

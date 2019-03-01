@@ -26,6 +26,7 @@ import { EquipmentPreviewComponent } from './components/dashboard/equipment-prev
 import { LogoutComponent } from './components/logout/logout.component';
 import { ProfileComponent } from './components/dashboard/profile/profile.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
+import {SettingsService} from "../../services/services/settings.service";
 
 @NgModule({
     declarations: [
@@ -61,7 +62,7 @@ import { SettingsComponent } from './components/dashboard/settings/settings.comp
         MatCardModule,
         MatMenuModule
     ],
-    providers: [AuthService, HttpService, DataService],
+    providers: [AuthService, HttpService, DataService, SettingsService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

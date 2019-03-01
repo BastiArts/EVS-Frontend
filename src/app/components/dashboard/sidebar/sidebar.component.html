@@ -5,10 +5,10 @@
       [opened]="!(isHandset$ | async)">
     <mat-card class="avatarbox">
       <mat-card-content>
-        <div mat-card-avatar class="avatar"></div>
+        <div mat-card-avatar class="avatar" [ngStyle]="{'background-image': 'url(' + this.dataservice.sessionUser.picturePath + ')'}"></div>
         <div id = "studentsinfo">
-          <mat-card-title>Manuel Fadljevic</mat-card-title>
-          <mat-card-subtitle>4AHITM</mat-card-subtitle>
+          <mat-card-title>{{this.dataservice.sessionUser.firstname}} {{this.dataservice.sessionUser.lastname}}</mat-card-title>
+          <mat-card-subtitle>{{this.dataservice.sessionUser.schoolclass}}</mat-card-subtitle>
         </div>
       </mat-card-content>
       <div id = "actions">

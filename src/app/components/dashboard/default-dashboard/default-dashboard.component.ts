@@ -14,16 +14,16 @@ export class DefaultDashboardComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Meine Geräte', cols: 2, rows: 1},
-          { title: 'Verfügbares Equipment', cols: 2, rows: 1},
-          { title: 'Lehrer', cols: 2, rows: 1 }
+          { title: 'Meine Geräte', cols: 2, rows: 1, collapsed: true},
+          { title: 'Verfügbares Equipment', cols: 2, rows: 1, collapsed: false},
+          { title: 'Lehrer', cols: 2, rows: 1, collapsed: false}
         ];
       }
 
       return [
-        { title: 'Meine Geräte', cols: 2, rows: 1, content: EquipmentComponent },
-        { title: 'Verfügbares Equpiment', cols: 1, rows: 1, content: "hi2" },
-          { title: 'Lehrer', cols: 1, rows: 1, content: "hi3" }
+        { title: 'Meine Geräte', cols: 2, rows: 1, collapsed: false},
+        { title: 'Verfügbares Equpiment', cols: 1, rows: 1, collapsed: false},
+          { title: 'Lehrer', cols: 1, rows: 1, collapsed: false}
       ];
     })
   );

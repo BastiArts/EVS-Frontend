@@ -1,42 +1,44 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {User} from '../../src/app/app.user';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class DataService {
+    sessionUser: User = localStorage.getItem('user') !== null ? JSON.parse(localStorage.getItem('user')) : null;
+    // Sidebar Navigation-Items
+    navItems: Array<Object> = [
+        {
+            name: 'Dashboard',
+            icon: 'dashboard',
+            route: '/'
+        },
+        {
+            name: 'Meine Geräte',
+            icon: 'assignment',
+            route: 'equipment'
+        },
+        {
+            name: 'Ausleihen',
+            icon: 'shopping_cart',
+            route: 'leihen'
+        },
+        {
+            name: 'Logout',
+            icon: 'logout',
+            route: 'logout'
+        }
+    ];
+    // Return Info Data
+    equipmentName1: String = 'Zoom Audiogerät';
+    returnDate1: String = '20.03.2019';
 
-  // Sidebar Navigation-Items
-  navItems:Array<Object> = [
-    {
-      name: "Dashboard",
-      icon: "dashboard",
-      route: "/"
-    },
-    {
-      name: "Meine Geräte",
-      icon: "assignment",
-      route: "equipment"
-    },
-    {
-      name: "Ausleihen",
-      icon: "shopping_cart",
-      route: "leihen"
-    },
-    {
-      name: "Logout",
-      icon: "logout",
-      route: "logout"
+    equipmentName2: String = 'BlackMagic Kamera Set';
+    returnDate2: String = '11.01.2019';
+
+    equipmentName3: String = 'Sony Film Kamera P50';
+    returnDate3: String = '15.02.2019';
+
+    constructor() {
     }
-  ];
-  // Return Info Data
-  equipmentName1: String = "Zoom Audiogerät";
-  returnDate1: String = "20.03.2019";
-
-  equipmentName2: String = "BlackMagic Kamera Set";
-  returnDate2: String = "11.01.2019";
-
-  equipmentName3: String = "Sony Film Kamera P50";
-  returnDate3: String = "15.02.2019";
-
-  constructor() {}
 }
