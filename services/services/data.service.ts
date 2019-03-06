@@ -11,22 +11,26 @@ export class DataService {
         {
             name: 'Dashboard',
             icon: 'dashboard',
-            route: '/'
+            route: '/',
+            role: ''
         },
         {
             name: 'Meine Geräte',
             icon: 'assignment',
-            route: 'equipment'
+            route: 'equipment',
+            role: 'Student'
         },
         {
             name: 'Ausleihen',
             icon: 'shopping_cart',
-            route: 'leihen'
+            route: 'leihen',
+            role: 'Student'
         },
         {
             name: 'Logout',
             icon: 'logout',
-            route: 'logout'
+            route: 'logout',
+            role: ''
         }
     ];
     // Return Info Data

@@ -4,7 +4,6 @@ import {HomepageComponent} from './components/homepage/homepage.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {AuthService} from '../../services/services/auth.service';
 import {EquipmentComponent} from './components/dashboard/equipment/equipment.component';
-import {StudentsBoardComponent} from './components/dashboard/students-board/students-board.component';
 import {DefaultDashboardComponent} from './components/dashboard/default-dashboard/default-dashboard.component';
 import {ProfileComponent} from './components/dashboard/profile/profile.component';
 import {LogoutComponent} from './components/logout/logout.component';
@@ -18,7 +17,6 @@ const routes: Routes = [
     {
         path: 'dashboard', component: DashboardComponent, canActivate: [AuthService], children: [
             {path: '', component: DefaultDashboardComponent},
-            {path: 'students', component: StudentsBoardComponent},
             {path: 'equipment', component: EquipmentComponent},
             {path: 'logout', component: LogoutComponent},
             {path: 'profil', component: ProfileComponent},
