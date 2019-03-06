@@ -6,7 +6,7 @@
         <mat-card class="avatarbox">
             <mat-card-content>
                 <div mat-card-avatar class="avatar"
-                     [ngStyle]="getPB()"></div>
+                     [ngStyle]="this.dataservice.getPB()"></div>
                 <div id="studentsinfo">
                     <mat-card-title>{{this.dataservice.sessionUser.firstname}} {{this.dataservice.sessionUser.lastname}}</mat-card-title>
                     <mat-card-subtitle>{{this.dataservice.sessionUser.schoolclass}}</mat-card-subtitle>

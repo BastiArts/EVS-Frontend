@@ -5,7 +5,7 @@
 export const environment = {
     production: false,
     // Defines the Base-URL of the REST-Server
-    apiUrl: 'http://172.17.27.66:8080/rest/users/' // 192.168.137.53 > 172.18.107.73 192.168.137.52
+    apiUrl: 'http://192.168.137.198:8080/rest/users/' // 192.168.137.53 > 172.18.107.73 192.168.137.52
 };
 
 /*

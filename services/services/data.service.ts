@@ -45,4 +45,7 @@ export class DataService {
 
     constructor() {
     }
+    getPB() {
+        return {'background-image': this.sessionUser.picturePath.length === 0 ? 'url("../../../../assets/avatars/default.jpg")' : 'url("../../../../assets/avatars/' + this.sessionUser.picturePath + '")'};
+    }
 }

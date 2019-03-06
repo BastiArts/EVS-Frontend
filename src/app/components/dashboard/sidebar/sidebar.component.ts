@@ -31,9 +31,7 @@ export class SidebarComponent implements OnInit {
 
     }
 
-    getPB() {
-        return {'background-image': this.dataservice.sessionUser.picturePath.length === 0 ? 'url("../../../../assets/avatars/default.jpg")' : 'url("../../../../assets/avatars/' + this.dataservice.sessionUser.picturePath + '")'};
-    }
+
 
     openLogout(): void {
         const dialogRef = this.dialog.open(LogoutComponent, {

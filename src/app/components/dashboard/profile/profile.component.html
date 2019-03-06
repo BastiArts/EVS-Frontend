@@ -1,3 +1,25 @@
-<p>
-  profile works!
-</p>
+<div id="wrapper">
+    <mat-card>
+        <mat-card-content>
+            <div mat-card-avatar class="avatar"
+                 [ngStyle]="this.dataservice.getPB()"></div>
+            <form class="info">
+                <mat-form-field>
+                    <input matInput placeholder="Vorname" disabled [value]="this.dataservice.sessionUser.firstname">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="Nachname" disabled [value]="this.dataservice.sessionUser.lastname">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="Klasse" disabled [value]="this.dataservice.sessionUser.schoolclass">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="Email" id = "mail" [value]="this.dataservice.sessionUser.email">
+                </mat-form-field><br>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
