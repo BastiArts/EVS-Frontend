@@ -1,8 +1,13 @@
 <div id="wrapper">
     <mat-card>
         <mat-card-content>
-            <div mat-card-avatar class="avatar"
-                 [ngStyle]="this.dataservice.getPB()"></div>
+            <div id="avatarWrapper">
+                <div class = "overlay">
+                    <mat-icon>create</mat-icon>
+                </div>
+                <div mat-card-avatar class="avatar"
+                     [ngStyle]="this.dataservice.getPB()"></div>
+            </div>
             <form class="info">
                 <mat-form-field>
                     <input matInput placeholder="Vorname" disabled [value]="this.dataservice.sessionUser.firstname">
@@ -17,8 +22,11 @@
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                    <input matInput placeholder="Email" id = "mail" [value]="this.dataservice.sessionUser.email">
-                </mat-form-field><br>
+                    <input matInput placeholder="Email" id="mail" [value]="this.dataservice.sessionUser.email" required
+                           type="email">
+                </mat-form-field>
+                <br>
+                <mat-spinner-button [options]="btnOpts" (click) = "this.save()"></mat-spinner-button>
             </form>
         </mat-card-content>
     </mat-card>
