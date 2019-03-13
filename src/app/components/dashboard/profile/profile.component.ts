@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
 
     save() {
         this.btnOpts.active = true;
-        this.http.updateUser(this.dataservice.sessionUser).submit( res => {
+        this.http.updateUser(this.dataservice.sessionUser).subscribe( res => {
             this.btnOpts.active = false;
         });
     }
