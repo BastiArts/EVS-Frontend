@@ -27,6 +27,8 @@ import {ProfileComponent} from './components/dashboard/profile/profile.component
 import {SettingsComponent} from './components/dashboard/settings/settings.component';
 import {SettingsService} from '../../services/services/settings.service';
 import { TeacherScheduleComponent } from './components/dashboard/teacher-schedule/teacher-schedule.component';
+import {EquipmentOverviewComponent} from './components/dashboard/equipment-overview/equipment-overview.component';
+
 
 @NgModule({
     declarations: [
@@ -42,7 +44,8 @@ import { TeacherScheduleComponent } from './components/dashboard/teacher-schedul
         LogoutComponent,
         ProfileComponent,
         SettingsComponent,
-        TeacherScheduleComponent
+        TeacherScheduleComponent,
+        EquipmentOverviewComponent
     ],
     imports: [
         BrowserModule,

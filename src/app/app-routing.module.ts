@@ -8,6 +8,7 @@ import {DefaultDashboardComponent} from './components/dashboard/default-dashboar
 import {ProfileComponent} from './components/dashboard/profile/profile.component';
 import {LogoutComponent} from './components/logout/logout.component';
 import {SettingsComponent} from './components/dashboard/settings/settings.component';
+import {EquipmentOverviewComponent} from './components/dashboard/equipment-overview/equipment-overview.component';
 
 // Contains all the Routes, which can be navigated to
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
     {
         path: 'dashboard', component: DashboardComponent, canActivate: [AuthService], children: [
             {path: '', component: DefaultDashboardComponent},
-            {path: 'equipment', component: EquipmentComponent},
+            {path: 'equipment', component: EquipmentOverviewComponent}, // NOTE: DELETE EQUIPMENT COMPONENT
             {path: 'logout', component: LogoutComponent},
             {path: 'profil', component: ProfileComponent},
             {path: 'settings', component: SettingsComponent},

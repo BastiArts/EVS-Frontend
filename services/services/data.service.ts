@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {User} from '../../src/app/app.user';
+import {User} from '../../src/app/until/app.user';
 
 @Injectable({
     providedIn: 'root'
@@ -43,8 +43,14 @@ export class DataService {
     equipmentName3: String = 'Sony Film Kamera P50';
     returnDate3: String = '15.02.2019';
 
+    // EQUIPMENT OVERVIEW
+
+    currentCat: string = '';
+
+
     constructor() {
     }
+
     getPB() {
         return {'background-image': this.sessionUser.picturePath.length === 0 ? 'url("../../../../assets/avatars/default.jpg")' : 'url("../../../../assets/avatars/' + this.sessionUser.picturePath + '")'};
     }

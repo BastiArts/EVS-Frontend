@@ -22,11 +22,11 @@
                 </mat-form-field>
                 <br>
                 <mat-form-field>
-                    <input matInput placeholder="Email" id="mail" [value]="this.dataservice.sessionUser.email" required
+                    <input matInput placeholder="Email" id="mail" name="email" [(ngModel)]="this.dataservice.sessionUser.email" required
                            type="email">
                 </mat-form-field>
                 <br>
-                <mat-spinner-button [options]="btnOpts" (click) = "this.save()"></mat-spinner-button>
+                <mat-spinner-button [options]="btnOpts" (click) = "save()"></mat-spinner-button>
             </form>
         </mat-card-content>
     </mat-card>
