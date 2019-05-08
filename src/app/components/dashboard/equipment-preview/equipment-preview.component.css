@@ -1,13 +1,15 @@
 .itemBox{
+    position: relative;
     width: 128px;
     height:auto;
-    padding:10px;
+    padding:10px 10px 35px 10px;
     float:left;
     margin: 10px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
     cursor: pointer;
+    text-align: center;
 }
 .itemIcon{
     height:100px;
@@ -36,5 +38,10 @@
     opacity:1;
 }
 .mat-chip{
-    margin:0 auto;
+    position: absolute;
+    transform:translateX(-50%);
+    bottom: 0%;
+    left: 50%;
+    max-width: 70px;
+
 }

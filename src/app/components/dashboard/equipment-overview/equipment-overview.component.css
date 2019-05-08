@@ -1,0 +1,69 @@
+.example-small-box, .example-large-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+}
+.itemsContainer{
+    position: relative;
+    width: 73vw;
+    height: calc(100vh - 50px);
+    overflow: hidden;
+    margin: 0 auto;
+}
+.fullWidth{
+    width: calc(100vw - 300px);
+    text-align: center;
+}
+.item{
+    margin: 0 auto;
+}
+.example-card {
+    width: 20vw;
+    float: left;
+    margin: 1vw;
+    transition: all 0.6s;
+    text-align: center;
+}
+.example-card:hover{
+    background-color: rgb(242, 242, 242);
+    cursor: pointer;
+}
+
+.example-card p{
+    font-size: 1.1vw;
+}
+
+.equPic{
+    width: 88%;
+}
+
+.hervorhebung {
+    border-radius: 95%;
+    width: 8vw;
+    margin-left: 6vw;
+    padding: 1vw 0;
+    font-size: 1vw;
+    color: white;
+    background: rgb(165, 37, 174);
+    background: linear-gradient(90deg, rgba(165, 37, 174, 1) 0%, rgba(43, 138, 210, 1) 100%);
+}
+
+.example-tab-icon{
+    margin-right: 10px!important;
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (min-width : 320px) and (max-width : 480px) {
+    .example-card{
+        width: 69vw;
+        height: 69vw;
+    }
+
+    .itemsContainer{
+        width: 70vw;
+    }
+    .fullWidth{
+        width: 100vw!important;
+    }
+}

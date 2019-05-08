@@ -35,13 +35,21 @@ export class ProfileComponent implements OnInit {
         }
     }
 
+    edit() {
+        this.btnOpts.text = 'Speichern';
+        this.btnOpts.disabled = false;
+        this.btnOpts.active = false;
+    }
+
     save() {
-        this.btnOpts.active = true;
-        alert(this.dataservice.sessionUser.email);
-        this.http.updateUser(this.dataservice.sessionUser).subscribe( res => {
-            alert(res.email);
-            this.btnOpts.active = false;
-        });
+        if (!this.btnOpts.disabled) {
+            this.btnOpts.active = true;
+            this.http.updateUser(this.dataservice.sessionUser).subscribe(res => {
+                this.btnOpts.active = false;
+                this.btnOpts.disabled = true;
+                this.btnOpts.text = 'Gespeichert';
+            });
+        }
     }
 
 }

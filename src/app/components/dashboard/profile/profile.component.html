@@ -23,7 +23,7 @@
                 <br>
                 <mat-form-field>
                     <input matInput placeholder="Email" id="mail" name="email" [(ngModel)]="this.dataservice.sessionUser.email" required
-                           type="email">
+                           type="email" (input)="edit()">
                 </mat-form-field>
                 <br>
                 <mat-spinner-button [options]="btnOpts" (click) = "save()"></mat-spinner-button>

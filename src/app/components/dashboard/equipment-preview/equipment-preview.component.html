@@ -1,28 +1,7 @@
-<div class="itemBox">
+<div class="itemBox" *ngFor="let eq of this.equipment">
     <div class="itemIcon"></div>
-    <div class="itemOverlay">Deadline: 30.01.2019</div>
+    <div class="itemOverlay">{{eq.displayname}}</div>
     <mat-chip-list>
-        <mat-chip color="primary" selected>F20</mat-chip>
-    </mat-chip-list>
-</div>
-<div class="itemBox">
-    <div class="itemIcon"></div>
-    <div class="itemOverlay">Deadline: 30.01.2019</div>
-    <mat-chip-list>
-        <mat-chip color="primary" selected>F20</mat-chip>
-    </mat-chip-list>
-</div>
-<div class="itemBox">
-    <div class="itemIcon"></div>
-    <div class="itemOverlay">Deadline: 30.01.2019</div>
-    <mat-chip-list>
-        <mat-chip color="primary" selected>F20</mat-chip>
-    </mat-chip-list>
-</div>
-<div class="itemBox">
-    <div class="itemIcon"></div>
-    <div class="itemOverlay">Deadline: 30.01.2019</div>
-    <mat-chip-list>
-        <mat-chip color="primary" selected>F20</mat-chip>
+        <mat-chip color="primary" selected>{{eq.interneNummer}}</mat-chip>
     </mat-chip-list>
 </div>

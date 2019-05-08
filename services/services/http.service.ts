@@ -21,4 +21,8 @@ export class HttpService {
     updateUser(user: User) {
         return this.http.post(environment.apiUrl + 'users/updateUser', user);
     }
+
+    fetchEquipment(user: User) {
+        return this.http.get(environment.apiUrl + 'equipment/find'); //  + user.username
+    }
 }

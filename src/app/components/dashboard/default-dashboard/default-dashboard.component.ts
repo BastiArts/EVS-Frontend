@@ -1,8 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {map} from 'rxjs/operators';
 import {Breakpoints, BreakpointObserver} from '@angular/cdk/layout';
 import {DataService} from '../../../../../services/services/data.service';
 import {EquipmentComponent} from '../equipment/equipment.component';
+import {User} from '../../../until/app.user';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'default-dashboard',

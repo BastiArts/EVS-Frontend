@@ -1,0 +1,119 @@
+<mat-tab-group dynamicHeexample-large-boxight id="centerText" color="primary">
+
+  <mat-tab label="Alles">
+    <div class="fullWidth">
+      <div class = "itemsContainer">
+    <div *ngFor="let equ of equipment" class = "item">
+      <mat-card class="example-card ownCss">
+        <img mat-card-image [src]="choosePhotoPath(equ.category)" alt="Equipmentfoto" class="equPic">
+        <mat-card-content><b>
+          <!--<p class="hervorhebung">-->
+            {{equ.category.toUpperCase()}}
+          <!--</p>-->
+          <p>
+            {{equ.displayname}}
+          </p></b>
+        </mat-card-content>
+      </mat-card>
+      </div>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">camera_alt</mat-icon>
+      Fotokamera 
+    </ng-template>
+    <div  class="fullWidth">
+      <div class = "itemsContainer">
+    <div *ngFor="let equ of equipment" class = "item">
+        <mat-card class="example-card ownCss" *ngIf="equ.category==='camera'">
+          <img mat-card-image [src]="choosePhotoPath(equ.category)" alt="Equipmentfoto" class="equPic">
+          <mat-card-content><b>
+            <p class="hervorhebung">
+              {{equ.category.toUpperCase()}}
+            </p>
+            <p>
+              {{equ.displayname}}
+            </p></b>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">videocam</mat-icon>
+      Videokamera
+    </ng-template>
+    <div class="fullWidth">
+    <div class = "itemsContainer">
+    <div *ngFor="let equ of equipment" class = "item">
+        <mat-card class="example-card ownCss" *ngIf="equ.category==='video'">
+          <img mat-card-image [src]="choosePhotoPath(equ.category)" alt="Equipmentfoto" class="equPic">
+          <mat-card-content><b>
+            <p class="hervorhebung">
+              {{equ.category.toUpperCase()}}
+            </p>
+            <p>
+              {{equ.displayname}}
+            </p></b>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">mic</mat-icon>
+      Audiogeräte
+    </ng-template>
+    <div class="fullWidth">
+      <div class = "itemsContainer">
+    <div *ngFor="let equ of equipment" class = "item">
+        <mat-card class="example-card ownCss" *ngIf="equ.category==='audio'">
+          <img mat-card-image [src]="choosePhotoPath(equ.category)" alt="Equipmentfoto" class="equPic">
+          <mat-card-content><b>
+            <p class="hervorhebung">
+              {{equ.category.toUpperCase()}}
+            </p>
+            <p>
+              {{equ.displayname}}
+            </p></b>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">business_center</mat-icon>
+      Zubehör 
+    </ng-template>
+    <div class="fullWidth">
+      <div class = "itemsContainer">
+    <div *ngFor="let equ of equipment" class = "item">
+        <mat-card class="example-card ownCss" *ngIf="equ.category==='extra'">
+          <img mat-card-image [src]="choosePhotoPath(equ.category)" alt="Equipmentfoto" class="equPic">
+          <mat-card-content><b>
+            <p class="hervorhebung">
+              {{equ.category.toUpperCase()}}
+            </p>
+            <p>
+              {{equ.displayname}}
+            </p></b>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    </div>
+  </mat-tab>
+
+</mat-tab-group>

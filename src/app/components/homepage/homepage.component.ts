@@ -13,7 +13,7 @@ export class HomepageComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (localStorage.getItem('loggedIn').localeCompare('true') === 0) {
+        if (localStorage.getItem('user') !== null && localStorage.getItem('loggedIn').localeCompare('true') === 0) {
             this.router.navigate(['dashboard']);
         }
     }

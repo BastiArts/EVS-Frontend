@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
+import {User} from '../../src/app/until/app.user';
+import {DataService} from './data.service';
 
 @Injectable()
 export class AuthService implements CanActivate {
@@ -9,7 +11,7 @@ export class AuthService implements CanActivate {
 
     // Check if User is logged in
     canActivate() {
-        if (localStorage.getItem('loggedIn').localeCompare('true') === 0 && localStorage.getItem('user') !== null) {
+        if (localStorage.getItem('user') !== null && localStorage.getItem('loggedIn').localeCompare('true') === 0) {
             return true;
         } else {
             this.router.navigate(['home']);
