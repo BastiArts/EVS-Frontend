@@ -10,7 +10,6 @@
     position: relative;
     width: 73vw;
     height: calc(100vh - 50px);
-    overflow: hidden;
     margin: 0 auto;
 }
 .fullWidth{
@@ -61,9 +60,12 @@
     }
 
     .itemsContainer{
-        width: 70vw;
+        width: 78vw;
     }
     .fullWidth{
         width: 100vw!important;
+    }
+    .example-card {
+        margin: 1vw 0 1vw 0 !important;
     }
 }
