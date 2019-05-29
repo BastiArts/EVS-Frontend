@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {User} from '../../src/app/until/app.user';
+import {HttpService} from './http.service';
 
 @Injectable({
     providedIn: 'root'
@@ -48,7 +49,7 @@ export class DataService {
     currentCat: string = '';
 
 
-    constructor() {
+    constructor(private http: HttpService) {
     }
 
     getPB() {

@@ -33,7 +33,7 @@ export class TeacherScheduleComponent implements OnInit {
     checkAvailability(element, column) {
         let color = 'black';
         if (column === 'status') {
-            color = element['status'] === 'Anwesend' ? 'blue' : 'purple';
+            color = element['status'] === 'Anwesend' ? 'blue' : 'grey';
         }
         return color;
     }

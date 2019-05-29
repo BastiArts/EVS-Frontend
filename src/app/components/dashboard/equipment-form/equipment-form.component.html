@@ -1,0 +1,104 @@
+<div class="outerUpload">
+    <div class="innerUpload">
+    </div>
+</div>
+
+<table>
+    <!---------------------    2. zeile     --------------------->
+    <tr>
+        <td> <!-- Markenname -->
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Marke" [value]="brand" [(ngModel)]="brand">
+            </mat-form-field>
+        </td>
+        <td> <!-- Produktname -->
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Produktbezeichnung" [(ngModel)]="name">
+            </mat-form-field>
+        </td>
+    </tr>
+
+    <!---------------------    3. zeile     --------------------->
+
+    <tr>
+        <td>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Anzeigename" disabled [value]="this.brand + ' ' + this.name">
+            </mat-form-field>
+        </td> <!-- Disabled DisplayName -->
+        <td> <!-- Klassen auswählen (multiple select) -->
+            <mat-form-field class="example-full-width">
+                <mat-select placeholder="Klassen" [formControl]="classes" multiple>
+                    <mat-select-trigger>
+                        {{classes.value ? classes.value[0] : ''}}
+                        <span *ngIf="classes.value?.length > 1" class="example-additional-selection">
+        (+{{classes.value.length - 1}} {{classes.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let class of classList" [value]="class">{{class}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </td>
+    </tr>
+    <!---------------------    4. zeile     --------------------->
+    <tr>
+        <td> <!-- Kategorie auswählen -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Kategorie</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let cat of categories" [value]="cat" (click)="category = cat">
+                        {{cat}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </td>
+        <td><!-- Chips (Details hinzufügen) -->
+            <mat-form-field class="example-full-width">
+                <mat-chip-list #chipList>
+                    <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                              [removable]="removable" (removed)="remove(fruit)">
+                        {{fruit.name}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder="Produkt-Details"
+                           [matChipInputFor]="chipList"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+            </mat-form-field>
+        </td>
+    </tr>
+    <!---------------------    5. zeile     --------------------->
+    <tr>
+        <td>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Interne Nummer" [(ngModel)]="internal">
+            </mat-form-field>
+        </td> <!-- Hinzufügen Button -->
+        <td>
+            <mat-form-field class="example-full-width">
+                <input matInput type="number" placeholder="Preis" [(ngModel)]="price">
+            </mat-form-field>
+        </td>
+    </tr>
+    <!---------------------    6. zeile     --------------------->
+    <tr>
+        <td>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Seriennummer" [(ngModel)]="serial">
+            </mat-form-field>
+        </td>
+    </tr>
+    <!---------------------    7. zeile     --------------------->
+    <tr>
+        <td>
+
+        </td>
+        <td style="text-align: right;">
+            <button mat-stroked-button style="margin-right: 17.25%;" (click)="makeNewEquipment()">Equipment hinzufügen
+            </button>
+    </tr>
+
+</table>

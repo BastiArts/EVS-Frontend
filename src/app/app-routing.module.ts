@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {HomepageComponent} from './components/homepage/homepage.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {AuthService} from '../../services/services/auth.service';
-import {EquipmentComponent} from './components/dashboard/equipment/equipment.component';
 import {DefaultDashboardComponent} from './components/dashboard/default-dashboard/default-dashboard.component';
 import {ProfileComponent} from './components/dashboard/profile/profile.component';
 import {LogoutComponent} from './components/logout/logout.component';
@@ -17,6 +16,7 @@ const routes: Routes = [
     // Dashboard with Subroutes
     {
         path: 'dashboard', component: DashboardComponent, canActivate: [AuthService], children: [
+            // {path: '', component: this.dataservice.sessionUser.isStudent ? DefaultDashboardComponent : TeacherDashboardComponent},
             {path: '', component: DefaultDashboardComponent},
             {path: 'equipment', component: EquipmentOverviewComponent}, // NOTE: DELETE EQUIPMENT COMPONENT
             {path: 'logout', component: LogoutComponent},

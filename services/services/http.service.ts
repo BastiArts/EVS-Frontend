@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
 import {User} from '../../src/app/until/app.user';
 
@@ -18,11 +18,23 @@ export class HttpService {
         return this.http.get(environment.apiUrl + 'users/login?user=' + username + '&pwd=' + password);
     }
 
+    // Saves the changes made by the User (Profile update e.g.)
     updateUser(user: User) {
         return this.http.post(environment.apiUrl + 'users/updateUser', user);
     }
 
+    // Fetches the whole Equipment
+    fetchAllEquipment() {
+        return this.http.get(environment.apiUrl + 'equipment/find/'); //  + user.username
+    }
+
+    // Fetches the borrowed Equipment of a specific User
     fetchEquipment(user: User) {
-        return this.http.get(environment.apiUrl + 'equipment/find'); //  + user.username
+        return this.http.get(environment.apiUrl + 'equipment/find/' + user.username); //  + user.username
+    }
+
+    // Fetches the available Equipment that can be borrowed
+    fetchAvailableEquipment() {
+        return this.http.get(environment.apiUrl + 'equipment/findAvailable');
     }
 }
