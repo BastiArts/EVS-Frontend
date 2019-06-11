@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {User} from '../../src/app/until/app.user';
+import {User} from '../../src/app/util/app.user';
 import {HttpService} from './http.service';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class DataService {
             role: ''
         },
         {
-            name: 'Meine Geräte',
+            name: this.sessionUser !== null && this.sessionUser.isStudent ? 'Meine Geräte' : 'Alle Geräte',
             icon: 'assignment',
             route: 'equipment',
             role: 'Student'

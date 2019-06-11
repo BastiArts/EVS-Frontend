@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from '../../../../../services/services/data.service';
+import {DataService} from '../../../../services/services/data.service';
 import {MatProgressButtonOptions} from 'mat-progress-buttons';
-import {HttpService} from '../../../../../services/services/http.service';
+import {HttpService} from '../../../../services/services/http.service';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'app-profile',
@@ -33,6 +34,9 @@ export class ProfileComponent implements OnInit {
             mail.focus();
             // this.btnOpts.disabled = true;
         }
+        $('#openUpload').click(function () {
+            $('#imgupload').trigger('click');
+        });
     }
 
     edit() {
@@ -50,6 +54,10 @@ export class ProfileComponent implements OnInit {
                 this.btnOpts.text = 'Gespeichert';
             });
         }
+    }
+
+    uploadImage() {
+        $('#imgForm').submit();
     }
 
 }

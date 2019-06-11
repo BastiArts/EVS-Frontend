@@ -1,5 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {DataService} from '../../../../services/services/data.service';
 
 @Component({
     selector: 'app-logout',
@@ -8,14 +9,18 @@ import {Router} from '@angular/router';
 })
 export class LogoutComponent implements OnInit {
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private dataservice: DataService) {
     }
 
     ngOnInit() {
     }
 
     onCancel(): void {
-        this.router.navigate(['dashboard']);
+        if (this.dataservice.sessionUser.isStudent) {
+            this.router.navigate(['dashboard']);
+        } else {
+            this.router.navigate(['teacher']);
+        }
     }
 
     logout(): void {

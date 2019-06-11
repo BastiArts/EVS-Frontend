@@ -12,17 +12,18 @@ export class TeacherDashboardComponent {
     cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
         map(({matches}) => {
             if (matches) {
+                // MOBILE
                 return [
                     {title: 'Verborgte Geräte', cols: 2, rows: 1, collapsed: true},
                     {title: 'Verfügbares Equipment', cols: 2, rows: 1, collapsed: false},
-                    {title: 'Lehrer', cols: 2, rows: 1, collapsed: false}
+                    {title: 'Anfragen', cols: 2, rows: 1, collapsed: false}
                 ];
             }
-
+            // WEB VIEW
             return [
-                {title: 'Meine Geräte', cols: 2, rows: 1, collapsed: false},
-                {title: 'Verfügbares Equpiment', cols: 1, rows: 1, collapsed: false},
-                {title: 'Lehrer', cols: 1, rows: 1, collapsed: false}
+                {title: 'Verborgte Geräte', cols: 2, rows: 1, collapsed: false},
+                {title: 'Anfragen', cols: 2, rows: 1, collapsed: false},
+                {title: 'Verfügbares Equpiment', cols: 1, rows: 1, collapsed: false}
             ];
         })
     );

@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
-import {User} from '../../src/app/until/app.user';
-import {DataService} from './data.service';
 
 @Injectable()
 export class AuthService implements CanActivate {

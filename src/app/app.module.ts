@@ -24,14 +24,17 @@ import {DefaultDashboardComponent} from './components/dashboard/default-dashboar
 import {TeacherDashboardComponent} from './components/dashboard/teacher-dashboard/teacher-dashboard.component';
 import {EquipmentPreviewComponent} from './components/dashboard/equipment-preview/equipment-preview.component';
 import {LogoutComponent} from './components/logout/logout.component';
-import {ProfileComponent} from './components/dashboard/profile/profile.component';
-import {SettingsComponent} from './components/dashboard/settings/settings.component';
+import {ProfileComponent} from './components/profile/profile.component';
+import {SettingsComponent} from './components/settings/settings.component';
 import {SettingsService} from '../../services/services/settings.service';
 import {TeacherScheduleComponent} from './components/dashboard/teacher-schedule/teacher-schedule.component';
 import {EquipmentOverviewComponent} from './components/dashboard/equipment-overview/equipment-overview.component';
 import {EquipmentChartComponent} from './components/dashboard/equipment-chart/equipment-chart.component';
 import {GoogleChartsModule} from 'angular-google-charts';
 import {EquipmentFormComponent} from './components/dashboard/equipment-form/equipment-form.component';
+import {RoleGuard} from '../../services/services/role.guard';
+import {EquipmentInfoComponent} from './components/equipment-info/equipment-info.component';
+import {AnfrageComponent} from './components/dashboard/teacher-dashboard/anfrage/anfrage.component';
 
 @NgModule({
     declarations: [
@@ -51,7 +54,9 @@ import {EquipmentFormComponent} from './components/dashboard/equipment-form/equi
         TeacherScheduleComponent,
         EquipmentOverviewComponent,
         EquipmentChartComponent,
-        EquipmentFormComponent
+        EquipmentFormComponent,
+        EquipmentInfoComponent,
+        AnfrageComponent
     ],
     imports: [
         BrowserModule,
@@ -73,7 +78,7 @@ import {EquipmentFormComponent} from './components/dashboard/equipment-form/equi
         MatMenuModule,
         GoogleChartsModule.forRoot()
     ],
-    providers: [AuthService, HttpService, DataService, SettingsService],
+    providers: [AuthService, HttpService, DataService, SettingsService, RoleGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule {

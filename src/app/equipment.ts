@@ -1,4 +1,4 @@
-import {User} from './until/app.user'; // CHANGED NAME FROM UNTIL TO UTIL
+import {User} from './util/app.user'; // CHANGED NAME FROM UNTIL TO UTIL
 
 export class Equipment {
     interneNummer?: string;

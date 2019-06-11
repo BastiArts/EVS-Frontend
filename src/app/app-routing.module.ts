@@ -4,10 +4,13 @@ import {HomepageComponent} from './components/homepage/homepage.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {AuthService} from '../../services/services/auth.service';
 import {DefaultDashboardComponent} from './components/dashboard/default-dashboard/default-dashboard.component';
-import {ProfileComponent} from './components/dashboard/profile/profile.component';
+import {ProfileComponent} from './components/profile/profile.component';
 import {LogoutComponent} from './components/logout/logout.component';
-import {SettingsComponent} from './components/dashboard/settings/settings.component';
+import {SettingsComponent} from './components/settings/settings.component';
 import {EquipmentOverviewComponent} from './components/dashboard/equipment-overview/equipment-overview.component';
+import {TeacherDashboardComponent} from './components/dashboard/teacher-dashboard/teacher-dashboard.component';
+import {RoleGuard} from '../../services/services/role.guard';
+import {EquipmentInfoComponent} from './components/equipment-info/equipment-info.component';
 
 // Contains all the Routes, which can be navigated to
 const routes: Routes = [
@@ -18,13 +21,23 @@ const routes: Routes = [
         path: 'dashboard', component: DashboardComponent, canActivate: [AuthService], children: [
             // {path: '', component: this.dataservice.sessionUser.isStudent ? DefaultDashboardComponent : TeacherDashboardComponent},
             {path: '', component: DefaultDashboardComponent},
-            {path: 'equipment', component: EquipmentOverviewComponent}, // NOTE: DELETE EQUIPMENT COMPONENT
+            {path: 'equipment', component: EquipmentOverviewComponent},
             {path: 'logout', component: LogoutComponent},
             {path: 'profil', component: ProfileComponent},
             {path: 'settings', component: SettingsComponent},
             {path: '**', redirectTo: 'dashboard'}
         ]
     },
+
+    {
+        path: 'teacher', component: DashboardComponent, canActivate: [RoleGuard], children: [
+            {path: '', component: TeacherDashboardComponent},
+            {path: 'logout', component: LogoutComponent},
+            {path: 'profil', component: ProfileComponent},
+            {path: 'settings', component: SettingsComponent}
+        ]
+    },
+    {path: 'bla', component: EquipmentInfoComponent},
     {path: 'home', component: HomepageComponent},
     // Fallback route if not logged in
     {path: '**', redirectTo: 'home'}
@@ -34,5 +47,7 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
+
+// @ts-ignore
 export class AppRoutingModule {
 }

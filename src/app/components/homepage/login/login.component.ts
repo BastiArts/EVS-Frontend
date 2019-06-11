@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../../until/app.user';
+import {User} from '../../../util/app.user';
 import {MatProgressButtonOptions} from 'mat-progress-buttons';
 import {Router} from '@angular/router';
 import {HttpService} from '../../../../../services/services/http.service';
