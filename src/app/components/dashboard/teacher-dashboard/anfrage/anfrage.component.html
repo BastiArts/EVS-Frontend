@@ -1,0 +1,44 @@
+<table [dataSource]="equipments" mat-table>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell> Name</th>
+        <td *matCellDef="let equipment"
+            mat-cell> {{equipment.borrowUser.firstname}} {{equipment.borrowUser.lastname}}</td>
+    </ng-container>
+
+    <!-- Gerät Column -->
+    <ng-container matColumnDef="geraet">
+        <th *matHeaderCellDef mat-header-cell> Gerät</th>
+        <td *matCellDef="let equipment" mat-cell> {{equipment.displayname}}</td>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="datum">
+        <th *matHeaderCellDef mat-header-cell> Datum</th>
+        <td *matCellDef="let equipment" mat-cell> {{date}}</td>
+    </ng-container>
+
+    <!-- Accept (Häkchen) Column -->
+    <ng-container matColumnDef="accept">
+        <th *matHeaderCellDef mat-header-cell></th>
+        <td *matCellDef="let equipment" mat-cell>
+            <mat-icon (click)="acceptEquipmentAnfrage(equipment)" class="acceptIt" color="primary">check</mat-icon>
+        </td>
+    </ng-container>
+
+    <!-- Decline (Kreuz) Column -->
+    <ng-container matColumnDef="decline">
+        <th *matHeaderCellDef mat-header-cell></th>
+        <td *matCellDef="let equipment" mat-cell>
+            <mat-icon (click)="declineEquipmentAnfrage(equipment)" class="acceptIt" color="accent">close</mat-icon>
+        </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+</table>
+

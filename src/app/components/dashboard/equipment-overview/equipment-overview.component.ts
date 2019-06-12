@@ -1,6 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Equipment} from '../../../Equipment';
 import {DataService} from '../../../../../services/services/data.service';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {HttpService} from '../../../../../services/services/http.service';
+
+export interface DialogData {
+    interneNummer?: string;
+    category?: string;
+    name?: string;
+    brand?: string;
+    displayname?: string;
+    serialNumber?: string;
+    usableClasses?: string[];
+    price?: number;
+    photoPath?: string;
+    specs?: string[];
+}
 
 @Component({
     selector: 'EquipmentOverview',
@@ -10,20 +25,17 @@ import {DataService} from '../../../../../services/services/data.service';
 export class EquipmentOverviewComponent implements OnInit {
 
 
-    equipment: Equipment[] = [
-        new Equipment('camera', 'XT100', 'FujiCam'),
-        new Equipment('camera', 'RX230', 'Sony'),
-        new Equipment('camera', 'Magic', 'Black'),
-        new Equipment('video', 'FDR-AX100', 'Sony'),
-        new Equipment('video', 'JVC GY-HM70E', 'unknown'),
-        new Equipment('audio', 'Zoom', 'otherCompanies')];
+    equipment: Equipment[];
 
 
-    constructor(public equService: DataService) {
+    constructor(public equService: DataService, public dialog: MatDialog, private httpService: HttpService) {
     }
 
     ngOnInit() {
-        for (let equ of this.equipment) {
+        this.httpService.fetchAllEquipment().subscribe(res => {
+            this.equipment = res;
+        });
+        for (const equ of this.equipment) {
             equ.setDisplayName();
         }
     }
@@ -31,14 +43,53 @@ export class EquipmentOverviewComponent implements OnInit {
     choosePhotoPath(cat: string) {
         switch (cat) {
             case 'video':
-                return '../assets/video.png';
+                return '../assets/icons/equip/videocamera_icon.svg';
             case 'camera':
-                return '../assets/camera.png';
+                return '../assets/icons/equip/camera_icon.svg';
             case 'audio':
-                return '../assets/audio.png';
+                return '../assets/icons/equip/microphone_icon.svg';
             default:
                 return '../assets/LULULU.png';
         }
+    }
+
+    openDialog(equi: Equipment) {
+
+
+        const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+            width: '20%',
+            height: '50%',
+            data: {brand: equi.brand, name: equi.name, specs: equi.specs, interneNummer: equi.interneNummer, price: equi.price, serialNumber: equi.serialNumber, cat: equi.category, usableCla: equi.usableClasses, equip: equi}
+        });
+
+
+    }
+
+}
+
+@Component({
+    selector: 'dialog-overview-example-dialog',
+    templateUrl: 'dialog-overview-example-dialog.html',
+    styleUrls: ['dialog.css']
+})
+
+export class DialogOverviewExampleDialog {
+
+    constructor(
+        public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+        @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    }
+
+    close(): void {
+        this.dialogRef.close();
+    }
+
+    edit(): void {
+        this.dialogRef.close();
+    }
+
+    delete(equi: Equipment) {
+        this.dialogRef.close();
     }
 
 }

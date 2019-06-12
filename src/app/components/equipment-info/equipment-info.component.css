@@ -1,0 +1,59 @@
+.infoWrapper {
+    position: relative;
+    width: 600px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.itemImg {
+    background-image: url("../../../assets/jacky.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 150px;
+    width: 150px;
+
+}
+
+.details {
+    position: absolute;
+    width: calc(100% - 170px);
+    float: right;
+    top: 0;
+    right: 0;
+    height: calc(100% - 32px);
+    text-align: center;
+    padding: 16px;
+}
+
+.title {
+    font-size: large;
+    font-family: "Nexa Bold";
+}
+
+.returnDate {
+    font-family: "Nexa Light";
+    font-size: small;
+    color: orangered;
+    margin-top: 5px;
+}
+
+.borrowUser {
+    margin-top: 20px;
+}
+
+.actionbuttons {
+    margin-top: 10px;
+}
+
+.closeIcon {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background-image: url("../../../assets/close.png");
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+}

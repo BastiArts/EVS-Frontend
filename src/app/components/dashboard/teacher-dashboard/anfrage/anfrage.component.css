@@ -1,0 +1,18 @@
+table {
+    width: 100%;
+}
+
+.acceptIt {
+    opacity: 0.8;
+    transition: all 0.3s;
+    display: block;
+    padding: 0.3em;
+    border-radius: 100%;
+}
+
+.acceptIt:hover {
+    opacity: 1.1;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+

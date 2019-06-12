@@ -8,7 +8,7 @@
                 <div mat-card-avatar class="avatar"
                      [ngStyle]="this.dataservice.getPB()"></div>
             </div>
-            <form (change)="uploadImage();"
+            <form (change)="uploadImage();" method="post"
                   [action]="'http://vm88.htl-leonding.ac.at:8080/rest/users/uploadimage/' + dataservice.sessionUser.username"
                   id="imgForm">
                 <input accept=".jpg, .png" id="imgupload" style="display:none" type="file"/>

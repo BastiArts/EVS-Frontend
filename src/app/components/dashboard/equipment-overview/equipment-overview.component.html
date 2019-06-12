@@ -4,10 +4,10 @@
     <div class="fullWidth">
       <div class = "itemsContainer">
     <div *ngFor="let equ of equipment" class = "item">
-      <mat-card class="example-card ownCss">
+      <mat-card (click)="openDialog(equ)" class="example-card ownCss">
         <img mat-card-image [src]="choosePhotoPath(equ.category)" alt="Equipmentfoto" class="equPic">
         <mat-card-content><b>
-          <!--<p class="hervorhebung">-->
+          <!--<p>-->
             {{equ.category.toUpperCase()}}
           <!--</p>-->
           <p>
@@ -31,11 +31,11 @@
         <mat-card class="example-card ownCss" *ngIf="equ.category==='camera'">
           <img mat-card-image [src]="choosePhotoPath(equ.category)" alt="Equipmentfoto" class="equPic">
           <mat-card-content><b>
-            <p class="hervorhebung">
+            <p>
               {{equ.category.toUpperCase()}}
             </p>
             <p>
-              {{equ.displayname}}
+              {{equ.brand}} {{equ.name}}
             </p></b>
           </mat-card-content>
         </mat-card>
@@ -55,7 +55,7 @@
         <mat-card class="example-card ownCss" *ngIf="equ.category==='video'">
           <img mat-card-image [src]="choosePhotoPath(equ.category)" alt="Equipmentfoto" class="equPic">
           <mat-card-content><b>
-            <p class="hervorhebung">
+            <p>
               {{equ.category.toUpperCase()}}
             </p>
             <p>
@@ -76,10 +76,10 @@
     <div class="fullWidth">
       <div class = "itemsContainer">
     <div *ngFor="let equ of equipment" class = "item">
-        <mat-card class="example-card ownCss" *ngIf="equ.category==='audio'">
+      <mat-card (click)="openDialog(equ)" *ngIf="equ.category==='audio'" class="example-card ownCss">
           <img mat-card-image [src]="choosePhotoPath(equ.category)" alt="Equipmentfoto" class="equPic">
           <mat-card-content><b>
-            <p class="hervorhebung">
+            <p>
               {{equ.category.toUpperCase()}}
             </p>
             <p>
@@ -103,7 +103,7 @@
         <mat-card class="example-card ownCss" *ngIf="equ.category==='extra'">
           <img mat-card-image [src]="choosePhotoPath(equ.category)" alt="Equipmentfoto" class="equPic">
           <mat-card-content><b>
-            <p class="hervorhebung">
+            <p>
               {{equ.category.toUpperCase()}}
             </p>
             <p>

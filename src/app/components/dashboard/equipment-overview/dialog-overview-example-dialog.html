@@ -1,0 +1,51 @@
+<h1 mat-dialog-title> {{data.brand}} {{data.name}}</h1>
+
+
+<mat-dialog-content>
+
+
+    <div id="example-container">
+
+        <mat-form-field>
+            <input matInput placeholder="Kategorie" value={{data.cat}}>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Marke" value={{data.brand}}>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Name" value={{data.name}}>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <textarea matInput placeholder="Spezifikationen" value={{data.specs}}></textarea>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Interne Nummer" value={{data.interneNummer}}>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Seriennummer" value={{data.serialNumber}}>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Klassen" value={{data.usableCla}}>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Preis in Euro" value={{data.price}}>
+        </mat-form-field>
+        <br>
+        <div (click)="this.close()" class="closeIcon"></div>
+    </div>
+
+
+    <button mat-button (click)="edit(data.equip)">Speichern</button>
+
+    <button mat-button (click)="delete(data.equip)">Löschen</button>
+
+
+    <button mat-button [mat-dialog-close]="true">Close</button>

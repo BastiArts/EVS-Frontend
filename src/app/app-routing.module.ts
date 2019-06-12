@@ -22,6 +22,7 @@ const routes: Routes = [
             // {path: '', component: this.dataservice.sessionUser.isStudent ? DefaultDashboardComponent : TeacherDashboardComponent},
             {path: '', component: DefaultDashboardComponent},
             {path: 'equipment', component: EquipmentOverviewComponent},
+            {path: 'leihen', component: EquipmentOverviewComponent},
             {path: 'logout', component: LogoutComponent},
             {path: 'profil', component: ProfileComponent},
             {path: 'settings', component: SettingsComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
             {path: '', component: TeacherDashboardComponent},
             {path: 'logout', component: LogoutComponent},
             {path: 'profil', component: ProfileComponent},
+            {path: 'equipment', component: EquipmentOverviewComponent},
             {path: 'settings', component: SettingsComponent}
         ]
     },
