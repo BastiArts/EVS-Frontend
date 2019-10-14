@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material';
+import {MatChipInputEvent, MatSnackBar} from '@angular/material';
 import {FormControl} from '@angular/forms';
 import {Equipment} from '../../../Equipment';
 import {HttpService} from '../../../../../services/services/http.service';
@@ -15,6 +15,7 @@ export interface Detail {
     styleUrls: ['./equipment-form.component.css']
 })
 export class EquipmentFormComponent implements OnInit {
+    private productImage = {name: ''};
     brand: string = '';
     name: string = '';
     category: string = '';
@@ -37,7 +38,7 @@ export class EquipmentFormComponent implements OnInit {
         {name: 'useful'}
     ];
 
-    constructor(private http: HttpService) {
+    constructor(private http: HttpService, private snackBar: MatSnackBar) {
     }
 
     resetForm() {
@@ -74,6 +75,7 @@ export class EquipmentFormComponent implements OnInit {
         }
     }
 
+
     makeNewEquipment() {
 
         /*
@@ -95,6 +97,7 @@ export class EquipmentFormComponent implements OnInit {
             }
         }
         this.http.addEquipment(new Equipment(this.internal, this.category, this.name, this.brand, this.displayname, this.serial, this.usableClasses, this.getSpecs(), parseInt(this.price, 10), null));
+        this.uploadImage(this.productImage);
         this.resetForm();
     }
 
@@ -106,6 +109,44 @@ export class EquipmentFormComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    saveTemporalImage(event) {
+        this.productImage = event[0];
+        console.log(this.productImage);
+        // TEMP IMAGE
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            // document.getElementById('previewIMG').setAttribute('src', e.target.result);
+            document.getElementsByClassName('innerUpload')[0].setAttribute('style',
+                'background-image: url(\'' + e.target.result + '\')');
+
+        };
+        reader.readAsDataURL(event[0]);
+    }
+
+    uploadImage(event) {
+        const formData = new FormData();
+        // tslint:disable-next-line:prefer-for-of
+        for (let index = 0; index < event.length; index++) {
+            const element = event[index];
+            formData.append('equipmentID', this.internal);
+            formData.append('file', element, element.name);
+            this.http.uploadImage(formData).subscribe(res => {
+                    /* tslint:disable:no-string-literal */
+                    if (res['status'] === 'success') {
+                        this.snackBar.open('Image: ' + res['fileName'] + ' successfully uploaded.', '✔');
+                    } else {
+                        this.snackBar.open('ERROR: ' + res['exception'], 'Try again');
+                    }
+                    setTimeout(() => this.snackBar.dismiss(), 1000);
+                },
+                err => {
+                    console.log(err);
+                });
+            /* tslint:enable:no-string-literal */
+        }
     }
 
 }

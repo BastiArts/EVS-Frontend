@@ -1,5 +1,6 @@
 <div class="outerUpload">
-    <div class="innerUpload">
+    <div (click)="fileInput.click()" class="innerUpload">
+        <input #fileInput (change)="saveTemporalImage($event.target.files)" hidden type="file">
     </div>
 </div>
 

@@ -33,6 +33,7 @@ export class HttpService {
     fetchEquipment(user: User) {
         return this.http.get(environment.apiUrl + 'equipment/find/' + user.username); //  + user.username
     }
+
     // Fetches the available Equipment that can be borrowed
     fetchAvailableEquipment() {
         return this.http.get(environment.apiUrl + 'equipment/findAvailable');
@@ -49,5 +50,9 @@ export class HttpService {
 
     addEquipment(e: Equipment) {
         return this.http.post(environment.apiUrl + 'equipment/addEquipment', e);
+    }
+
+    uploadImage(formData) {
+        return this.http.post(environment.apiUrl + 'equipment/uploadImage', formData);
     }
 }
