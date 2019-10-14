@@ -11,6 +11,8 @@ import {EquipmentOverviewComponent} from './components/dashboard/equipment-overv
 import {TeacherDashboardComponent} from './components/dashboard/teacher-dashboard/teacher-dashboard.component';
 import {RoleGuard} from '../../services/services/role.guard';
 import {EquipmentInfoComponent} from './components/equipment-info/equipment-info.component';
+import {EquipmentFormComponent} from './components/dashboard/equipment-form/equipment-form.component';
+import {LogViewComponent} from './components/log-view/log-view.component';
 
 // Contains all the Routes, which can be navigated to
 const routes: Routes = [
@@ -36,6 +38,8 @@ const routes: Routes = [
             {path: 'logout', component: LogoutComponent},
             {path: 'profil', component: ProfileComponent},
             {path: 'equipment', component: EquipmentOverviewComponent},
+            {path: 'add', component: EquipmentFormComponent},
+            {path: 'log', component: LogViewComponent},
             {path: 'settings', component: SettingsComponent}
         ]
     },

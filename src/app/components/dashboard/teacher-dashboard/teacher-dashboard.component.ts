@@ -23,7 +23,8 @@ export class TeacherDashboardComponent {
             return [
                 {title: 'Verborgte Geräte', cols: 2, rows: 1, collapsed: false},
                 {title: 'Anfragen', cols: 2, rows: 1, collapsed: false},
-                {title: 'Verfügbares Equpiment', cols: 1, rows: 1, collapsed: false}
+                {title: 'Verfügbares Equpiment', cols: 1, rows: 1, collapsed: false},
+                {title: 'Equpiment hinzufügen', cols: 1, rows: 1, collapsed: false}
             ];
         })
     );

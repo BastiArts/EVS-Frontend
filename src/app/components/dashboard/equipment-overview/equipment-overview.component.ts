@@ -35,9 +35,9 @@ export class EquipmentOverviewComponent implements OnInit {
         this.httpService.fetchAllEquipment().subscribe(res => {
             this.equipment = res;
         });
-        for (const equ of this.equipment) {
-            equ.setDisplayName();
-        }
+        /* for (const equ of this.equipment) {
+             equ.setDisplayName();
+         }*/
     }
 
     choosePhotoPath(cat: string) {
@@ -77,18 +77,20 @@ export class DialogOverviewExampleDialog {
 
     constructor(
         public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-        @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+        @Inject(MAT_DIALOG_DATA) public data: DialogData, private http: HttpService, public dataservice: DataService) {
     }
 
     close(): void {
         this.dialogRef.close();
     }
 
-    edit(): void {
+    edit(equipment: Equipment): void {
+        this.http.updateEquipment(equipment);
         this.dialogRef.close();
     }
 
     delete(equi: Equipment) {
+        this.http.deleteEquipment(equi);
         this.dialogRef.close();
     }
 

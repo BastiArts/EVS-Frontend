@@ -11,8 +11,13 @@
                 <mat-card-content class="dashboard-card-content">
                     <!--<equipment-preview *ngIf="card.title === 'Meine Geräte'"></equipment-preview>
                     <teacher-schedule *ngIf="card.title === 'Lehrer'"></teacher-schedule>-->
-                    <equipmentChart *ngIf="card.title === 'Verfügbares Equpiment'"></equipmentChart>
                     <Anfragen *ngIf="card.title === 'Anfragen'"></Anfragen>
+                    <equipmentChart *ngIf="card.title === 'Verfügbares Equpiment'"></equipmentChart>
+                    <div *ngIf="card.title === 'Equpiment hinzufügen'" id="equiAdd" routerLink="add">
+                        <i class="material-icons">
+                            add_a_photo
+                        </i>
+                    </div>
                 </mat-card-content>
             </mat-card>
         </mat-grid-tile>

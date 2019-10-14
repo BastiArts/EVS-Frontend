@@ -1,0 +1,14 @@
+<div id="filterBar">
+    <button (click)="filterLog('AUSGEBORGT')" color="warn" mat-button>AUSGEBORGT</button>
+    <button (click)="filterLog('RESERVIERT')" color="accent" mat-button>RESERVIERT</button>
+    <button (click)="filterLog('RETOUR')" color="success" mat-button>RETOUR</button>
+    <button (click)="filterLog('')" color="success" mat-button>ALLE</button>
+</div>
+<div id="logView">
+    <div *ngFor="let entry of this.filteredEntries" class="logEntry">
+        <span class="date">{{entry.timestamp}}</span>
+        <span [innerHTML]="formatStatus(entry.status)" class="status"></span>
+        <span [innerHTML]="entry.user" class="user"></span>
+        <span [innerHTML]="entry.equipment" class="equipment"></span>
+    </div>
+</div>

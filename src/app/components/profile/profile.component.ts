@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
         raised: true,
         stroked: false,
         buttonColor: '',
-        spinnerColor: 'primary', // accent
+        spinnerColor: 'primary',
         fullWidth: false,
         disabled: false,
         mode: 'indeterminate',
@@ -34,20 +34,24 @@ export class ProfileComponent implements OnInit {
             mail.focus();
             // this.btnOpts.disabled = true;
         }
+        // Listener for image Upload
         $('#openUpload').click(function () {
             $('#imgupload').trigger('click');
         });
     }
 
+    // Method to change edited Profile
     edit() {
         this.btnOpts.text = 'Speichern';
         this.btnOpts.disabled = false;
         this.btnOpts.active = false;
     }
 
+// Save changed Profile
     save() {
         if (!this.btnOpts.disabled) {
             this.btnOpts.active = true;
+            // Wait for the Server's response
             this.http.updateUser(this.dataservice.sessionUser).subscribe(res => {
                 this.btnOpts.active = false;
                 this.btnOpts.disabled = true;

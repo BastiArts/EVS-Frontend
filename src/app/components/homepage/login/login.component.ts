@@ -40,21 +40,32 @@ export class LoginComponent implements OnInit {
         this.btnOpts.active = true;
 
         this.http.login(user, password).subscribe(res => {
-            if (Object.entries(res).length !== 0) {
-                localStorage.setItem('loggedIn', 'true');
-                this.dataservice.sessionUser = res;
-                localStorage.setItem('user', JSON.stringify(this.dataservice.sessionUser));
-                if (this.dataservice.sessionUser.picturePath.toString() === '') {
-                    this.dataservice.sessionUser.picturePath = '../../../../assets/avatars/default.jpg';
+                if (Object.entries(res).length !== 0) {
+                    localStorage.setItem('loggedIn', 'true');
+                    this.dataservice.sessionUser = res;
+                    localStorage.setItem('user', JSON.stringify(this.dataservice.sessionUser));
+                    if (this.dataservice.sessionUser.picturePath.toString() === '') {
+                        this.dataservice.sessionUser.picturePath = '../../../../assets/avatars/default.jpg';
+                    } else {
+                        this.dataservice.sessionUser.picturePath = '../../../../assets/avatars/' + this.dataservice.sessionUser.picturePath;
+                    }
+                    if ((<Boolean>res['isStudent'])) {
+                        this.dataservice.filteredNavItems = this.dataservice.navItems.filter(i => i['role'] !== 'Teacher');
+                    } else {
+                        this.dataservice.filteredNavItems = this.dataservice.navItems.filter(i => i['role'] !== 'Student');
+
+                    }
+                    localStorage.setItem('navItems', JSON.stringify(this.dataservice.filteredNavItems));
+                    this.router.navigate(['dashboard']);
                 } else {
-                    this.dataservice.sessionUser.picturePath = '../../../../assets/avatars/' + this.dataservice.sessionUser.picturePath;
+                    this.btnOpts.active = false;
+                    alert('Invalid credentials');
                 }
-                this.router.navigate(['dashboard']);
-            } else {
+            },
+            error => {
                 this.btnOpts.active = false;
-                alert('Invalid credentials');
-            }
-        });
+                alert('Error ' + error);
+            });
 
     }
 

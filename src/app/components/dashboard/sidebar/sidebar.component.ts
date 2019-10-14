@@ -32,7 +32,6 @@ export class SidebarComponent implements OnInit {
     }
 
 
-
     openLogout(): void {
         const dialogRef = this.dialog.open(LogoutComponent, {
             width: '250px'

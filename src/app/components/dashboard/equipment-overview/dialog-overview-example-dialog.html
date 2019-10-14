@@ -42,10 +42,10 @@
         <div (click)="this.close()" class="closeIcon"></div>
     </div>
 
+    <div *ngIf="!this.dataservice.sessionUser.isStudent">
+        <button (click)="edit(data.equip)" mat-button>Speichern</button>
 
-    <button mat-button (click)="edit(data.equip)">Speichern</button>
-
-    <button mat-button (click)="delete(data.equip)">Löschen</button>
-
+        <button (click)="delete(data.equip)" mat-button>Löschen</button>
+    </div>
 
     <button mat-button [mat-dialog-close]="true">Close</button>

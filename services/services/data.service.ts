@@ -16,7 +16,7 @@ export class DataService {
             role: ''
         },
         {
-            name: this.sessionUser !== null && this.sessionUser.isStudent ? 'Meine Geräte' : 'Alle Geräte',
+            name: 'Meine Geräte',
             icon: 'assignment',
             route: 'equipment',
             role: 'Student'
@@ -27,6 +27,25 @@ export class DataService {
             route: 'leihen',
             role: 'Student'
         },
+        // Teacher Menu
+        {
+            name: 'Alle Geräte',
+            icon: 'assignment',
+            route: 'equipment',
+            role: 'Teacher'
+        },
+        {
+            name: 'Hinzufügen',
+            icon: 'add_box',
+            route: 'add',
+            role: 'Teacher'
+        },
+        {
+            name: 'History',
+            icon: 'history',
+            route: 'log',
+            role: 'Teacher'
+        },
         {
             name: 'Logout',
             icon: 'logout',
@@ -34,6 +53,8 @@ export class DataService {
             role: ''
         }
     ];
+    // Sidebar Navigation-Items
+    filteredNavItems: Array<Object> = localStorage.getItem('navItems') !== null ? JSON.parse(localStorage.getItem('navItems')) : this.navItems;
     // Return Info Data
     equipmentName1: String = 'Zoom Audiogerät';
     returnDate1: String = '20.03.2019';

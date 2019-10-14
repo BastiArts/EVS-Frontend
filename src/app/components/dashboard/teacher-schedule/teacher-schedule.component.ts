@@ -92,7 +92,7 @@ const TEACHER_DATA: Teacher[] = [
             new Day('Donnerstag', ['08:00 - 11:45']),
             new Day('Freitag', ['08:00 - 13:35'])
         ],
-        status: 'Abwesend'
+        status: 'Anwesend'
     },
     {
         name: 'Martin Huemer',

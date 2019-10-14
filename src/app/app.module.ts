@@ -28,13 +28,14 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {SettingsComponent} from './components/settings/settings.component';
 import {SettingsService} from '../../services/services/settings.service';
 import {TeacherScheduleComponent} from './components/dashboard/teacher-schedule/teacher-schedule.component';
-import {EquipmentOverviewComponent} from './components/dashboard/equipment-overview/equipment-overview.component';
+import {DialogOverviewExampleDialog, EquipmentOverviewComponent} from './components/dashboard/equipment-overview/equipment-overview.component';
 import {EquipmentChartComponent} from './components/dashboard/equipment-chart/equipment-chart.component';
 import {GoogleChartsModule} from 'angular-google-charts';
 import {EquipmentFormComponent} from './components/dashboard/equipment-form/equipment-form.component';
 import {RoleGuard} from '../../services/services/role.guard';
 import {EquipmentInfoComponent} from './components/equipment-info/equipment-info.component';
 import {AnfrageComponent} from './components/dashboard/teacher-dashboard/anfrage/anfrage.component';
+import {LogViewComponent} from './components/log-view/log-view.component';
 
 @NgModule({
     declarations: [
@@ -56,7 +57,9 @@ import {AnfrageComponent} from './components/dashboard/teacher-dashboard/anfrage
         EquipmentChartComponent,
         EquipmentFormComponent,
         EquipmentInfoComponent,
-        AnfrageComponent
+        DialogOverviewExampleDialog,
+        AnfrageComponent,
+        LogViewComponent
     ],
     imports: [
         BrowserModule,
@@ -79,7 +82,9 @@ import {AnfrageComponent} from './components/dashboard/teacher-dashboard/anfrage
         GoogleChartsModule.forRoot()
     ],
     providers: [AuthService, HttpService, DataService, SettingsService, RoleGuard],
+    entryComponents: [DialogOverviewExampleDialog],
     bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

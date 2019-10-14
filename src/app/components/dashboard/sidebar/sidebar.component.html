@@ -24,7 +24,7 @@
             </div>
         </mat-card>
         <mat-nav-list>
-            <a mat-list-item *ngFor="let item of this.dataservice.navItems" routerLink="{{item.route}}"
+            <a *ngFor="let item of this.dataservice.filteredNavItems" mat-list-item routerLink="{{item.route}}"
                [ngClass]="toggleActive(item.route)">
                 <mat-icon>{{item.icon}}</mat-icon>
                 {{item.name}}</a>

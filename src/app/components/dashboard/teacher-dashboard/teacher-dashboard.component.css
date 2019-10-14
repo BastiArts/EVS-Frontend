@@ -30,3 +30,14 @@
 .mat-card {
     overflow-y: auto;
 }
+
+#equiAdd {
+    text-align: center;
+}
+
+#equiAdd i {
+    font-size: 128px;
+    text-align: center;
+    cursor: pointer;
+
+}

@@ -13,13 +13,14 @@ export class DefaultDashboardComponent implements OnInit {
     cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
         map(({matches}) => {
             if (matches) {
+                // Mobile
                 return [
                     {title: 'Meine Geräte', cols: 2, rows: 1, collapsed: true},
                     {title: 'Verfügbares Equipment', cols: 2, rows: 1, collapsed: false},
                     {title: 'Lehrer', cols: 2, rows: 1, collapsed: false}
                 ];
             }
-
+            // Web
             return [
                 {title: 'Meine Geräte', cols: 2, rows: 1, collapsed: false},
                 {title: 'Verfügbares Equpiment', cols: 1, rows: 1, collapsed: false},
