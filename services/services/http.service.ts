@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
 import {User} from '../../src/app/util/app.user';
 import {Equipment} from '../../src/app/equipment';
@@ -39,6 +39,12 @@ export class HttpService {
         return this.http.get(environment.apiUrl + 'equipment/findAvailable');
     }
 
+    // Rent Equipment
+    rentEquipment(userid: string, serialNumber: string, fromdate: string, toDate: string) {
+        const params = new HttpParams().set('userid', userid).set('serialnumber', serialNumber).set('fromdate', fromdate).set('todate', toDate);
+        return this.http.get(environment.apiUrl + 'entlehnung/createentlehnung', {params});
+    }
+
 
     deleteEquipment(e: Equipment) {
         return this.http.post(environment.apiUrl + 'equipment/deleteEquipment', e);
@@ -53,6 +59,14 @@ export class HttpService {
     }
 
     uploadImage(formData) {
-        return this.http.post(environment.apiUrl + 'equipment/uploadImage', formData);
+        return this.http.post(environment.apiUrl + 'equipment/uploadimage', formData);
+    }
+
+    getLogs() {
+        return this.http.get(environment.apiUrl + 'equipment/getalllogsfiles');
+    }
+
+    getLogByName(filename: string) {
+        return this.http.get(environment.apiUrl + 'equipment/getdatafromlog/' + filename);
     }
 }

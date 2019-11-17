@@ -18,6 +18,18 @@
             </mat-form-field>
         </td>
     </tr>
+    <tr>
+        <td> <!-- Langname -->
+            <mat-form-field class="example-full-width">
+                <input [(ngModel)]="longname" [value]="longname" matInput placeholder="Langname">
+            </mat-form-field>
+        </td>
+        <td> <!-- Inventorynumber -->
+            <mat-form-field class="example-full-width">
+                <input [(ngModel)]="inventorynumber" matInput placeholder="Inventarnummer">
+            </mat-form-field>
+        </td>
+    </tr>
 
     <!---------------------    3. zeile     --------------------->
 
@@ -78,11 +90,6 @@
                 <input matInput placeholder="Interne Nummer" [(ngModel)]="internal">
             </mat-form-field>
         </td> <!-- Hinzufügen Button -->
-        <td>
-            <mat-form-field class="example-full-width">
-                <input matInput type="number" placeholder="Preis" [(ngModel)]="price">
-            </mat-form-field>
-        </td>
     </tr>
     <!---------------------    6. zeile     --------------------->
     <tr>

@@ -19,7 +19,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {DataService} from '../../services/services/data.service';
 import {SidebarComponent} from './components/dashboard/sidebar/sidebar.component';
 import {LayoutModule} from '@angular/cdk/layout';
-import {MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatListModule, MatMenuModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatListModule, MatMenuModule, MatNativeDateModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {DefaultDashboardComponent} from './components/dashboard/default-dashboard/default-dashboard.component';
 import {TeacherDashboardComponent} from './components/dashboard/teacher-dashboard/teacher-dashboard.component';
 import {EquipmentPreviewComponent} from './components/dashboard/equipment-preview/equipment-preview.component';
@@ -36,6 +36,7 @@ import {RoleGuard} from '../../services/services/role.guard';
 import {EquipmentInfoComponent} from './components/equipment-info/equipment-info.component';
 import {AnfrageComponent} from './components/dashboard/teacher-dashboard/anfrage/anfrage.component';
 import {LogViewComponent} from './components/log-view/log-view.component';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -79,9 +80,10 @@ import {LogViewComponent} from './components/log-view/log-view.component';
         MatGridListModule,
         MatCardModule,
         MatMenuModule,
+        MatNativeDateModule,
         GoogleChartsModule.forRoot()
     ],
-    providers: [AuthService, HttpService, DataService, SettingsService, RoleGuard],
+    providers: [AuthService, HttpService, DataService, SettingsService, RoleGuard, DatePipe],
     entryComponents: [DialogOverviewExampleDialog],
     bootstrap: [AppComponent]
 })

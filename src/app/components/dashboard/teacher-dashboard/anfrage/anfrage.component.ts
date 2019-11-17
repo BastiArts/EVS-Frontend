@@ -31,7 +31,7 @@ export class AnfrageComponent implements OnInit {
 
     declineEquipmentAnfrage(equ: Equipment) {
         // code for declining...
-        this.equipments = this.equipments.filter(f => f.interneNummer !== equ.interneNummer);
+        this.equipments = this.equipments.filter(f => f.internenummer !== equ.internenummer);
     }
 
 }

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LogEntry} from '../../log-entry';
+import {HttpService} from '../../../../services/services/http.service';
 
 @Component({
     selector: 'app-log-view',
@@ -9,12 +10,15 @@ import {LogEntry} from '../../log-entry';
 export class LogViewComponent implements OnInit {
     private entries: Array<LogEntry> = [];
     private filteredEntries: Array<LogEntry> = [];
+    private logs: Array<string> = [];
 
-    constructor() {
+    constructor(private http: HttpService) {
     }
 
     ngOnInit() {
-        this.initEntries();
+        this.http.getLogs().subscribe(res => {
+            this.logs = res;
+        });
     }
 
     filterLog(filter: string) {
@@ -35,6 +39,13 @@ export class LogViewComponent implements OnInit {
             default:
                 break;
         }
+    }
+
+    switchLogs(logFileName: string) {
+        this.http.getLogByName(logFileName).subscribe(logs => {
+            this.entries = logs;
+            this.filteredEntries = this.entries;
+        });
     }
 
     initEntries() {

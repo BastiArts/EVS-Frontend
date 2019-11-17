@@ -3,49 +3,50 @@
 
 <mat-dialog-content>
 
-
     <div id="example-container">
 
-        <mat-form-field>
-            <input matInput placeholder="Kategorie" value={{data.cat}}>
+        <mat-form-field class="example-full-width">
+            <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [max]="maxDate" [min]="minDate"
+                   [value]="selectedBeginnDate"
+                   matInput placeholder="Datum wählen:">
+            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
         <br>
-        <mat-form-field>
-            <input matInput placeholder="Marke" value={{data.brand}}>
-        </mat-form-field>
         <br>
-        <mat-form-field>
-            <input matInput placeholder="Name" value={{data.name}}>
-        </mat-form-field>
+        <b>Von :</b> {{selectedBeginnDate}}
         <br>
-        <mat-form-field>
-            <textarea matInput placeholder="Spezifikationen" value={{data.specs}}></textarea>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input matInput placeholder="Interne Nummer" value={{data.interneNummer}}>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input matInput placeholder="Seriennummer" value={{data.serialNumber}}>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input matInput placeholder="Klassen" value={{data.usableCla}}>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input matInput placeholder="Preis in Euro" value={{data.price}}>
-        </mat-form-field>
-        <br>
-        <div (click)="this.close()" class="closeIcon"></div>
-    </div>
 
-    <div *ngIf="!this.dataservice.sessionUser.isStudent">
-        <button (click)="edit(data.equip)" mat-button>Speichern</button>
+        <mat-form-field class="example-full-width">
 
-        <button (click)="delete(data.equip)" mat-button>Löschen</button>
-    </div>
+            <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker2" [max]="maxDate" [min]="minDate"
+                   [value]="selectedEndDate"
+                   matInput placeholder="Datum wählen:">
+            <mat-datepicker-toggle [for]="picker2" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <br>
+        <b>Bis</b> : {{selectedEndDate}}
+        <br>
 
-    <button mat-button [mat-dialog-close]="true">Close</button>
+        <b>Marke</b>: {{data.brand}}
+
+        <br>
+        <b>Name :</b> {{data.name}}
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <div mat-dialog-actions>
+
+
+            <button (click)="this.rent(data.serialNumber,selectedBeginnDate,selectedEndDate)" mat-button>Reservieren
+            </button>
+
+            <button *ngIf="" mat-button>Ausborgen</button>
+
+            <button [mat-dialog-close]="true" mat-button>Close</button>
+        </div>

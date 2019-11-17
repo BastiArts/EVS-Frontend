@@ -1,8 +1,12 @@
 <div id="filterBar">
-    <button (click)="filterLog('AUSGEBORGT')" color="warn" mat-button>AUSGEBORGT</button>
-    <button (click)="filterLog('RESERVIERT')" color="accent" mat-button>RESERVIERT</button>
-    <button (click)="filterLog('RETOUR')" color="success" mat-button>RETOUR</button>
     <button (click)="filterLog('')" color="success" mat-button>ALLE</button>
+    <button (click)="filterLog('AUSGEBORGT')" color="warn" mat-button>AUSGEBORGT</button>
+    <button (click)="filterLog('RESERVIERT')" mat-button style="color:orange;">RESERVIERT</button>
+    <button (click)="filterLog('RETOUR')" mat-button style="color:green;">RETOUR</button>
+    <select (change)="switchLogs($event.target.value)">
+        <option selected>---</option>
+        <option *ngFor="let log of logs">{{log}}</option>
+    </select>
 </div>
 <div id="logView">
     <div *ngFor="let entry of this.filteredEntries" class="logEntry">

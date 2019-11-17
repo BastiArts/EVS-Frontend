@@ -25,9 +25,10 @@ export class EquipmentFormComponent implements OnInit {
     serial: string = '';
     usableClasses: string[] = [];
     specs: string[] = [];
-
+    longname: string = '';
+    inventorynumber: string = '';
     classes = new FormControl();
-    classList: string[] = ['1AHITM', '1BHITM', '2AHITM', '2BHITM', '3AHITM', '3BHITM', '4AHITM', '5AHITM', '5BHITM',];
+    classList: string[] = ['1AHITM', '1BHITM', '2AHITM', '2BHITM', '3AHITM', '3BHITM', '4AHITM', '5AHITM', '5BHITM'];
     categories: string[] = ['Kamera', 'Videokamer', 'Audiogerät', 'Zubehör'];
     visible = true;
     selectable = true;
@@ -52,6 +53,8 @@ export class EquipmentFormComponent implements OnInit {
         this.usableClasses = [];
         this.specs = [];
         this.fruits = [];
+        this.longname = '';
+        this.inventorynumber = '';
     }
 
     add(event: MatChipInputEvent): void {
@@ -96,9 +99,11 @@ export class EquipmentFormComponent implements OnInit {
                 i++;
             }
         }
-        this.http.addEquipment(new Equipment(this.internal, this.category, this.name, this.brand, this.displayname, this.serial, this.usableClasses, this.getSpecs(), parseInt(this.price, 10), null));
-        this.uploadImage(this.productImage);
-        this.resetForm();
+        this.http.addEquipment(new Equipment(this.internal, this.editCategory(this.category), this.name, this.brand, this.displayname, this.serial, this.usableClasses, this.getSpecs(), this.longname, this.inventorynumber)).subscribe(res => {
+            alert(res);
+            this.uploadImage([this.productImage]);
+        });
+        // this.resetForm();
     }
 
     getSpecs(): string[] {
@@ -133,6 +138,7 @@ export class EquipmentFormComponent implements OnInit {
             const element = event[index];
             formData.append('equipmentID', this.internal);
             formData.append('file', element, element.name);
+            formData.append('seriennummer', this.serial);
             this.http.uploadImage(formData).subscribe(res => {
                     /* tslint:disable:no-string-literal */
                     if (res['status'] === 'success') {
@@ -149,4 +155,18 @@ export class EquipmentFormComponent implements OnInit {
         }
     }
 
+    editCategory(cat: string) {
+        switch (cat) {
+            case 'Kamera':
+                return 'camera';
+            case 'Videokamera':
+                return 'videokamera';
+            case 'Audiogerät':
+                return 'audio';
+            case 'Zubehör':
+                return 'attachment';
+            default:
+                return 'nix';
+        }
+    }
 }

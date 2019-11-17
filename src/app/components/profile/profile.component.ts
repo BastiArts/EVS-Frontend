@@ -61,7 +61,20 @@ export class ProfileComponent implements OnInit {
     }
 
     uploadImage() {
-        $('#imgForm').submit();
+        // $('#imgForm').submit();
     }
 
+    saveTemporalImage(event) {
+        // TEMP IMAGE
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementsByClassName('avatar')[0].setAttribute('style',
+                'background-image: url(\'' + e.target.result + '\')');
+            document.getElementsByClassName('avatar')[1].setAttribute('style',
+                'background-image: url(\'' + e.target.result + '\')');
+
+        };
+        reader.readAsDataURL(event[0]);
+    }
 }

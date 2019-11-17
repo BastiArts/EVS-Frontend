@@ -3,6 +3,7 @@ import {Equipment} from '../../../Equipment';
 import {DataService} from '../../../../../services/services/data.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {HttpService} from '../../../../../services/services/http.service';
+import {DatePipe} from '@angular/common';
 
 export interface DialogData {
     interneNummer?: string;
@@ -57,11 +58,10 @@ export class EquipmentOverviewComponent implements OnInit {
 
 
         const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-            width: '20%',
+            width: '100%',
             height: '50%',
-            data: {brand: equi.brand, name: equi.name, specs: equi.specs, interneNummer: equi.interneNummer, price: equi.price, serialNumber: equi.serialNumber, cat: equi.category, usableCla: equi.usableClasses, equip: equi}
+            data: {brand: equi.brand, name: equi.name, specs: equi.specs, interneNummer: equi.internenummer, serialNumber: equi.serialnumber, cat: equi.category, usableCla: equi.usableclasses, equip: equi}
         });
-
 
     }
 
@@ -75,23 +75,49 @@ export class EquipmentOverviewComponent implements OnInit {
 
 export class DialogOverviewExampleDialog {
 
-    constructor(
-        public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-        @Inject(MAT_DIALOG_DATA) public data: DialogData, private http: HttpService, public dataservice: DataService) {
-    }
+
+    selectedBeginnDate = new Date();
+    selectedEndDate = new Date();
+
+    rentRequest: String = '';
+    fromDate: string = '';
+    toDate: string = '';
+    serialNumber;
+    userid;
+    minDate = new Date();
 
     close(): void {
         this.dialogRef.close();
     }
 
-    edit(equipment: Equipment): void {
-        this.http.updateEquipment(equipment);
-        this.dialogRef.close();
-    }
+    maxDate = new Date(3000, 0, 1);
 
     delete(equi: Equipment) {
-        this.http.deleteEquipment(equi);
         this.dialogRef.close();
     }
 
+    constructor(
+        public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+        @Inject(MAT_DIALOG_DATA) public data: DialogData,
+        public dataservice: DataService, private http: HttpService, public datepipe: DatePipe) {
+    }
+
+    rent(serialNumber: any, selectedBeginnDate: Date, selectedEndDate: Date): void {
+
+
+        this.toDate = this.datepipe.transform(this.selectedEndDate, 'dd-MM-yyyy');
+        this.fromDate = this.datepipe.transform(this.selectedBeginnDate, 'dd-MM-yyyy');
+        this.serialNumber = serialNumber;
+        // Unique identifier (e.g it150178)
+        this.userid = this.dataservice.sessionUser.username;
+
+        this.http.rentEquipment(this.userid, this.serialNumber, this.fromDate, this.toDate).subscribe(res => console.log(res));
+        this.dialogRef.close();
+    }
+
+    myFilter = (d: Date): boolean => {
+        const day = d.getDay();
+        // Prevent Saturday and Sunday
+        return day !== 0 && day !== 6;
+    };
 }

@@ -41,6 +41,12 @@
     line-height: 200px;
     margin: auto;
 }
+
+.avatar {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 .avatar, #avatarWrapper {
     position: relative;
     background-size: cover;
