@@ -45,7 +45,6 @@ export class HttpService {
         return this.http.get(environment.apiUrl + 'entlehnung/createentlehnung', {params});
     }
 
-
     deleteEquipment(e: Equipment) {
         return this.http.post(environment.apiUrl + 'equipment/deleteEquipment', e);
     }
@@ -68,5 +67,10 @@ export class HttpService {
 
     getLogByName(filename: string) {
         return this.http.get(environment.apiUrl + 'equipment/getdatafromlog/' + filename);
+    }
+
+    // Pending Ausborgeanfragen
+    getPendingRequests() {
+        return this.http.get(environment.apiUrl + 'entlehnung/getpendingentlehnungen');
     }
 }

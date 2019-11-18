@@ -38,6 +38,7 @@ export class EquipmentChartComponent implements OnInit {
                 camera: 0
             };
             for (const ae of availableEquipment) {
+                console.log(ae.category);
                 if (ae.category === 'audio') {
                     categories.audio += 1;
                 } else if (ae.category === 'video') {

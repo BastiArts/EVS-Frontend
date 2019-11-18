@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Equipment} from '../../../../equipment';
+import {HttpService} from '../../../../../../services/services/http.service';
 
 @Component({
     selector: 'Anfragen',
@@ -18,10 +19,14 @@ export class AnfrageComponent implements OnInit {
         // tslint:disable-next-line:max-line-length
         '{"id":3,"category":"video","name":"Camcorder3","brand":"Apple","displayname":"Apple Camcorder3","interneNummer":"F22 A300","price":0,"borrowUser":{"username":"it150158","firstname":"Julian","lastname":"Dannigner","email":"","schoolclass":"4AHITM","isStudent":false,"picturePath":""}}]');
 
-    constructor() {
+    constructor(private httpservice: HttpService) {
+        this.httpservice.getPendingRequests().subscribe(res => {
+            // TODO
+        });
     }
 
     ngOnInit() {
+
     }
 
     acceptEquipmentAnfrage(equ: Equipment) {
