@@ -14,7 +14,7 @@ export interface DialogData {
     serialNumber?: string;
     usableClasses?: string[];
     price?: number;
-    photoPath?: string;
+    photopath?: string;
     specs?: string[];
 }
 
@@ -41,16 +41,17 @@ export class EquipmentOverviewComponent implements OnInit {
          }*/
     }
 
-    choosePhotoPath(cat: string) {
-        switch (cat) {
+    choosePhotoPath(equ: Equipment) {
+        console.log(equ);
+        switch (equ.category) {
             case 'video':
-                return '../assets/icons/equip/videocamera_icon.svg';
+                return equ.photopath; // ? environment.domain + '/' + equ.photopath : '../assets/icons/equip/videocamera_icon.svg';
             case 'camera':
-                return '../assets/icons/equip/camera_icon.svg';
+                return equ.photopath; // ? environment.domain + '/' + equ.photopath : '../assets/icons/equip/camera_icon.svg';
             case 'audio':
-                return '../assets/icons/equip/microphone_icon.svg';
+                return equ.photopath; // ? environment.domain + '/' + equ.photopath : '../assets/icons/equip/microphone_icon.svg';
             default:
-                return '../assets/LULULU.png';
+                return equ.photopath; // ? environment.domain + '/' + equ.photopath : '../assets/LULULU.png';
         }
     }
 

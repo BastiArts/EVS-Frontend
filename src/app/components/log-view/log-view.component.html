@@ -1,6 +1,6 @@
 <div id="filterBar">
     <button (click)="filterLog('')" color="success" mat-button>ALLE</button>
-    <button (click)="filterLog('AUSGEBORGT')" color="warn" mat-button>AUSGEBORGT</button>
+    <button (click)="filterLog('AUSBORGEN')" color="warn" mat-button>AUSGEBORGT</button>
     <button (click)="filterLog('RESERVIERT')" mat-button style="color:orange;">RESERVIERT</button>
     <button (click)="filterLog('RETOUR')" mat-button style="color:green;">RETOUR</button>
     <select (change)="switchLogs($event.target.value)">

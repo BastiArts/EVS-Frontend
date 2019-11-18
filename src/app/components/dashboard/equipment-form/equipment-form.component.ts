@@ -29,7 +29,7 @@ export class EquipmentFormComponent implements OnInit {
     inventorynumber: string = '';
     classes = new FormControl();
     classList: string[] = ['1AHITM', '1BHITM', '2AHITM', '2BHITM', '3AHITM', '3BHITM', '4AHITM', '5AHITM', '5BHITM'];
-    categories: string[] = ['Kamera', 'Videokamer', 'Audiogerät', 'Zubehör'];
+    categories: string[] = ['Kamera', 'Videokamera', 'Audiogerät', 'Zubehör'];
     visible = true;
     selectable = true;
     removable = true;
@@ -136,13 +136,12 @@ export class EquipmentFormComponent implements OnInit {
         // tslint:disable-next-line:prefer-for-of
         for (let index = 0; index < event.length; index++) {
             const element = event[index];
-            formData.append('equipmentID', this.internal);
             formData.append('file', element, element.name);
-            formData.append('seriennummer', this.serial);
+            formData.append('serialnumber', this.serial);
             this.http.uploadImage(formData).subscribe(res => {
                     /* tslint:disable:no-string-literal */
                     if (res['status'] === 'success') {
-                        this.snackBar.open('Image: ' + res['fileName'] + ' successfully uploaded.', '✔');
+                        this.snackBar.open('Image: ' + res['filename'] + ' successfully uploaded.', '✔');
                     } else {
                         this.snackBar.open('ERROR: ' + res['exception'], 'Try again');
                     }

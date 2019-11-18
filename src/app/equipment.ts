@@ -7,7 +7,7 @@ export class Equipment {
     serialnumber?: string = '';
     usableclasses?: string[];
     price?: number;
-    photoPath?: string;
+    photopath?: string;
     specs?: string[];
     longname?: string = '';
     inventorynumber?: string = '';

@@ -3,6 +3,7 @@ import {DataService} from '../../../../services/services/data.service';
 import {MatProgressButtonOptions} from 'mat-progress-buttons';
 import {HttpService} from '../../../../services/services/http.service';
 import * as $ from 'jquery';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'app-profile',
@@ -11,7 +12,7 @@ import * as $ from 'jquery';
 })
 export class ProfileComponent implements OnInit {
 
-    constructor(public dataservice: DataService, private http: HttpService) {
+    constructor(public dataservice: DataService, private http: HttpService, private snackBar: MatSnackBar) {
     }
 
     mail: String;
@@ -60,8 +61,28 @@ export class ProfileComponent implements OnInit {
         }
     }
 
-    uploadImage() {
+    uploadImage(event) {
         // $('#imgForm').submit();
+        const formData = new FormData();
+        // tslint:disable-next-line:prefer-for-of
+        for (let index = 0; index < event.length; index++) {
+            const element = event[index];
+            formData.append('file', element, element.name);
+            formData.append('userid', this.dataservice.sessionUser.username);
+            this.http.uploadPB(formData).subscribe(res => {
+                    /* tslint:disable:no-string-literal */
+                    if (res['status'] === 'success') {
+                        this.snackBar.open('Image: ' + res['filename'] + ' successfully uploaded.', '✔');
+                    } else {
+                        this.snackBar.open('ERROR: ' + res['exception'], 'Try again');
+                    }
+                    setTimeout(() => this.snackBar.dismiss(), 1000);
+                },
+                err => {
+                    console.log(err);
+                });
+            /* tslint:enable:no-string-literal */
+        }
     }
 
     saveTemporalImage(event) {

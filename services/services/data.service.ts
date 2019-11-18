@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {User} from '../../src/app/util/app.user';
 import {HttpService} from './http.service';
 
@@ -69,6 +69,8 @@ export class DataService {
 
     currentCat: string = '';
 
+    // Emitter
+    updateEmitter: EventEmitter<string> = new EventEmitter(true);
 
     constructor(private http: HttpService) {
     }

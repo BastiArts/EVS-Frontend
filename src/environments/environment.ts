@@ -5,7 +5,8 @@
 export const environment = {
     production: false,
     // Defines the Base-URL of the REST-Server
-    apiUrl: 'http://vm88.htl-leonding.ac.at:8080/rest/' // 192.168.137.53 > 172.18.107.73 192.168.137.52
+    apiUrl: 'http://vm88.htl-leonding.ac.at:8080/rest/', // 192.168.137.53 > 172.18.107.73 192.168.137.52
+    domain: 'http://vm88.htl-leonding.ac.at'
 };
 
 /*

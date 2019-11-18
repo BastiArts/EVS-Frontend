@@ -1,4 +1,4 @@
 export class User {
-    constructor(public username: String = '', public firstname: String = '', public lastname: String = '', public email: String = '', public schoolclass: String = '', public isStudent: Boolean = true, public picturePath: String = '') {
+    constructor(public username: string = '', public firstname: string = '', public lastname: string = '', public email: string = '', public schoolclass: string = '', public isStudent: boolean = true, public picturePath: string = '') {
     }
 }

@@ -30,7 +30,7 @@ export class LogViewComponent implements OnInit {
 
     formatStatus(status: string) {
         switch (status.toLowerCase()) {
-            case 'ausgeborgt':
+            case 'ausborgen':
                 return '<span class = "ausgeborgt">' + status.toUpperCase() + '</span>';
             case 'retour':
                 return '<span class = "retour">' + status.toUpperCase() + '</span>';

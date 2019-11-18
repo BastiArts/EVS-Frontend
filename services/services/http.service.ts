@@ -61,6 +61,10 @@ export class HttpService {
         return this.http.post(environment.apiUrl + 'equipment/uploadimage', formData);
     }
 
+    uploadPB(formData) {
+        return this.http.post(environment.apiUrl + 'users/uploadimage', formData);
+    }
+
     getLogs() {
         return this.http.get(environment.apiUrl + 'equipment/getalllogsfiles');
     }

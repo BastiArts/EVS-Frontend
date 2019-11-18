@@ -15,9 +15,9 @@
 
         <br>
         <br>
-        <b>Von :</b> {{selectedBeginnDate}}
+        <b>Von :</b> {{this.datepipe.transform(this.selectedBeginnDate, 'dd-MM-yyyy')}}
         <br>
-
+        <br>
         <mat-form-field class="example-full-width">
 
             <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker2" [max]="maxDate" [min]="minDate"
@@ -28,7 +28,8 @@
         </mat-form-field>
         <br>
         <br>
-        <b>Bis</b> : {{selectedEndDate}}
+        <br>
+        <b>Bis</b> :{{this.datepipe.transform(this.selectedEndDate, 'dd-MM-yyyy')}}
         <br>
 
         <b>Marke</b>: {{data.brand}}
