@@ -8,7 +8,7 @@
         <mat-form-field class="example-full-width">
             <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [max]="maxDate" [min]="minDate"
                    [value]="selectedBeginnDate"
-                   matInput placeholder="Datum wählen:">
+                   matInput placeholder="Datum wählen:"(change)="somethingChanged()">
             <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -43,10 +43,10 @@
         <div mat-dialog-actions>
 
 
-            <button (click)="this.rent(data.serialNumber,selectedBeginnDate,selectedEndDate)" mat-button>Reservieren
+            <button *ngIf="isReservieren"(click)="this.rent(data.serialNumber,selectedBeginnDate,selectedEndDate)" mat-button>Reservieren
             </button>
 
-            <button *ngIf="" mat-button>Ausborgen</button>
+            <button *ngIf="isAusborgen" (click)="this.rent(data.serialNumber,selectedBeginnDate,selectedEndDate)"mat-button>Ausborgen</button>
 
             <button [mat-dialog-close]="true" mat-button>Close</button>
         </div>
