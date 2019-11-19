@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Equipment} from '../../../Equipment';
+import {Equipment} from '../../../equipment';
 import {DataService} from '../../../../../services/services/data.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {HttpService} from '../../../../../services/services/http.service';

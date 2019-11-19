@@ -1,112 +1,145 @@
+<div style="position: relative; height: 100vh; width: 0; float: left;"></div>
 <div class="outerUpload">
-    <div (click)="fileInput.click()" class="innerUpload">
-        <input #fileInput (change)="saveTemporalImage($event.target.files)" hidden type="file">
-    </div>
+  <div (click)="fileInput.click()" class="innerUpload">
+    <input #fileInput (change)="saveTemporalImage($event.target.files)" hidden type="file">
+  </div>
 </div>
+<main class="wrapper">
+  <section class="cards">
+    <ul>
+      <li>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Marke</mat-label>
+          <input matInput placeholder="Name des Herstellers" [value]="brand" [(ngModel)]="brand">
+        </mat-form-field>
+      </li>
 
-<table>
-    <!---------------------    2. zeile     --------------------->
-    <tr>
-        <td> <!-- Markenname -->
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Marke" [value]="brand" [(ngModel)]="brand">
-            </mat-form-field>
-        </td>
-        <td> <!-- Produktname -->
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Produktbezeichnung" [(ngModel)]="name">
-            </mat-form-field>
-        </td>
-    </tr>
-    <tr>
-        <td> <!-- Langname -->
-            <mat-form-field class="example-full-width">
-                <input [(ngModel)]="longname" [value]="longname" matInput placeholder="Langname">
-            </mat-form-field>
-        </td>
-        <td> <!-- Inventorynumber -->
-            <mat-form-field class="example-full-width">
-                <input [(ngModel)]="inventorynumber" matInput placeholder="Inventarnummer">
-            </mat-form-field>
-        </td>
-    </tr>
+      <li>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Produktbezeichnung</mat-label>
+          <input matInput placeholder="Produktbezeichnung" [(ngModel)]="name">
+        </mat-form-field>
+      </li>
 
-    <!---------------------    3. zeile     --------------------->
+      <li>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Langname</mat-label>
+          <input [(ngModel)]="longname" [value]="longname" matInput placeholder="Langname">
+        </mat-form-field>
+      </li>
 
-    <tr>
-        <td>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Anzeigename" disabled [value]="this.brand + ' ' + this.name">
-            </mat-form-field>
-        </td> <!-- Disabled DisplayName -->
-        <td> <!-- Klassen auswählen (multiple select) -->
-            <mat-form-field class="example-full-width">
-                <mat-select placeholder="Klassen" [formControl]="classes" multiple>
-                    <mat-select-trigger>
-                        {{classes.value ? classes.value[0] : ''}}
-                        <span *ngIf="classes.value?.length > 1" class="example-additional-selection">
+      <li>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Inventarnummer</mat-label>
+          <input [(ngModel)]="inventorynumber" matInput placeholder="Inventarnummer">
+        </mat-form-field>
+      </li>
+
+      <li>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Anzeigename</mat-label>
+          <input matInput placeholder="Anzeigename" disabled [value]="this.brand + ' ' + this.name">
+        </mat-form-field>
+      </li>
+
+      <li>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Klassen</mat-label>
+          <mat-select placeholder="Klassen" [formControl]="classes" multiple>
+            <mat-select-trigger>
+              {{classes.value ? classes.value[0] : ''}}
+              <span *ngIf="classes.value?.length > 1" class="example-additional-selection">
         (+{{classes.value.length - 1}} {{classes.value?.length === 2 ? 'other' : 'others'}})
       </span>
-                    </mat-select-trigger>
-                    <mat-option *ngFor="let class of classList" [value]="class">{{class}}</mat-option>
-                </mat-select>
-            </mat-form-field>
+            </mat-select-trigger>
+            <mat-option *ngFor="let class of classList" [value]="class">{{class}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </li>
 
-        </td>
-    </tr>
-    <!---------------------    4. zeile     --------------------->
-    <tr>
-        <td> <!-- Kategorie auswählen -->
-            <mat-form-field class="example-full-width">
-                <mat-label>Kategorie</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let cat of categories" [value]="cat" (click)="category = cat">
-                        {{cat}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </td>
-        <td><!-- Chips (Details hinzufügen) -->
-            <mat-form-field class="example-full-width">
-                <mat-chip-list #chipList>
-                    <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
-                              [removable]="removable" (removed)="remove(fruit)">
-                        {{fruit.name}}
-                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                    </mat-chip>
-                    <input placeholder="Produkt-Details"
-                           [matChipInputFor]="chipList"
-                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                           [matChipInputAddOnBlur]="addOnBlur"
-                           (matChipInputTokenEnd)="add($event)">
-                </mat-chip-list>
-            </mat-form-field>
-        </td>
-    </tr>
-    <!---------------------    5. zeile     --------------------->
-    <tr>
-        <td>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Interne Nummer" [(ngModel)]="internal">
-            </mat-form-field>
-        </td> <!-- Hinzufügen Button -->
-    </tr>
-    <!---------------------    6. zeile     --------------------->
-    <tr>
-        <td>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="Seriennummer" [(ngModel)]="serial">
-            </mat-form-field>
-        </td>
-    </tr>
-    <!---------------------    7. zeile     --------------------->
-    <tr>
-        <td>
+      <li>
+        <mat-form-field class="example-full-width" appearance="outline" appearance="outline">
+          <mat-label>Kategorie</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let cat of categories" [value]="cat" (click)="category = cat">
+              {{cat}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </li>
 
-        </td>
-        <td style="text-align: right;">
-            <button mat-stroked-button style="margin-right: 17.25%;" (click)="makeNewEquipment()">Equipment hinzufügen
-            </button>
-    </tr>
+      <li>
+        <mat-form-field class="example-full-width" appearance="outline" appearance="outline">
+          <mat-label>Anzeigename</mat-label>
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                      [removable]="removable" (removed)="remove(fruit)">
+              {{fruit.name}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Produkt-Details"
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+        </mat-form-field>
+      </li>
 
-</table>
+      <li>
+        <mat-form-field class="example-full-width" appearance="outline" appearance="outline">
+          <mat-label>Interne Nummer</mat-label>
+          <input matInput placeholder="Interne Nummer" [(ngModel)]="internal">
+        </mat-form-field>
+      </li>
+
+      <li>
+        <mat-form-field class="example-full-width" appearance="outline" appearance="outline">
+          <mat-label>Seriennummer</mat-label>
+          <input matInput placeholder="Seriennummer" [(ngModel)]="serial">
+        </mat-form-field>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- Markenname -->
+
+
+  <!-- Produktname -->
+
+
+  <!-- Langname -->
+
+
+  <!-- Inventorynumber -->
+
+
+  <!---------------------    3. zeile     --------------------->
+
+
+  <!-- Disabled DisplayName -->
+  <!-- Klassen auswählen (multiple select) -->
+
+
+  <!---------------------    4. zeile     --------------------->
+
+  <!-- Kategorie auswählen -->
+
+
+  <!-- Chips (Details hinzufügen) -->
+
+
+  <!---------------------    5. zeile     --------------------->
+
+
+  <!-- Hinzufügen Button -->
+
+  <!---------------------    6. zeile     --------------------->
+
+
+  <!---------------------    7. zeile     --------------------->
+  <button mat-stroked-button (click)="makeNewEquipment()">Equipment
+    hinzufügen
+  </button>
+</main>
