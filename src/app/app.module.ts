@@ -19,7 +19,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {DataService} from '../../services/services/data.service';
 import {SidebarComponent} from './components/dashboard/sidebar/sidebar.component';
 import {LayoutModule} from '@angular/cdk/layout';
-import {MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatListModule, MatMenuModule, MatNativeDateModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDialogModule, MatGridListModule, MatIconModule, MatListModule, MatMenuModule, MatNativeDateModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {DefaultDashboardComponent} from './components/dashboard/default-dashboard/default-dashboard.component';
 import {TeacherDashboardComponent} from './components/dashboard/teacher-dashboard/teacher-dashboard.component';
 import {EquipmentPreviewComponent} from './components/dashboard/equipment-preview/equipment-preview.component';
@@ -81,6 +81,7 @@ import {DatePipe} from '@angular/common';
         MatCardModule,
         MatMenuModule,
         MatNativeDateModule,
+        MatDialogModule,
         GoogleChartsModule.forRoot()
     ],
     providers: [AuthService, HttpService, DataService, SettingsService, RoleGuard, DatePipe],

@@ -59,7 +59,7 @@ export class EquipmentOverviewComponent implements OnInit {
 
 
         const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-            width: '100%',
+            width: '45%',
             height: '50%',
             data: {brand: equi.brand, name: equi.name, specs: equi.specs, interneNummer: equi.internenummer, serialNumber: equi.serialnumber, cat: equi.category, usableCla: equi.usableclasses, equip: equi}
         });
@@ -73,19 +73,20 @@ export class EquipmentOverviewComponent implements OnInit {
     templateUrl: 'dialog-overview-example-dialog.html',
     styleUrls: ['dialog.css']
 })
-
 export class DialogOverviewExampleDialog {
-
 
     selectedBeginnDate = new Date();
     selectedEndDate = new Date();
 
     rentRequest: String = '';
-    fromDate: string = '';
-    toDate: string = '';
+    fromDate = '';
+    toDate = '';
     serialNumber;
     userid;
     minDate = new Date();
+    isReservieren: Boolean = true;
+    isAusborgen: Boolean = false;
+
 
     close(): void {
         this.dialogRef.close();
@@ -115,6 +116,20 @@ export class DialogOverviewExampleDialog {
         this.http.rentEquipment(this.userid, this.serialNumber, this.fromDate, this.toDate).subscribe(res => console.log(res));
         this.dialogRef.close();
     }
+
+    somethingChanged(): void {
+        this.selectedEndDate = this.selectedBeginnDate > this.selectedEndDate ? this.selectedBeginnDate : this.selectedEndDate;
+
+        if (this.selectedBeginnDate = this.minDate) {
+            this.isAusborgen = true;
+            this.isReservieren = false;
+        } else {
+            this.isAusborgen = false;
+            this.isReservieren = true;
+        }
+
+    }
+
 
     myFilter = (d: Date): boolean => {
         const day = d.getDay();

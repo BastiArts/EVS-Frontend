@@ -4,50 +4,54 @@
 <mat-dialog-content>
 
     <div id="example-container">
-
+        <div class="pickerBox">
         <mat-form-field class="example-full-width">
             <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [max]="maxDate" [min]="minDate"
-                   [value]="selectedBeginnDate"
-                   matInput placeholder="Datum wählen:">
+                   (dateChange)="somethingChanged()"
+                   [(ngModel)]="selectedBeginnDate" matInput placeholder="From Date:">
             <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
         <br>
         <br>
-        <b>Von :</b> {{this.datepipe.transform(this.selectedBeginnDate, 'dd-MM-yyyy')}}
-        <br>
-        <br>
         <mat-form-field class="example-full-width">
 
             <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker2" [max]="maxDate" [min]="minDate"
-                   [value]="selectedEndDate"
-                   matInput placeholder="Datum wählen:">
+                   [(ngModel)]="selectedEndDate"
+                   matInput placeholder="To Date:">
             <mat-datepicker-toggle [for]="picker2" matSuffix></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
-        <br>
-        <br>
-        <br>
-        <b>Bis</b> :{{this.datepipe.transform(this.selectedEndDate, 'dd-MM-yyyy')}}
+        </div>
         <br>
 
+        <br>
+        <br>
         <b>Marke</b>: {{data.brand}}
 
         <br>
         <b>Name :</b> {{data.name}}
 
+
         <br>
-        <br>
-        <br>
-        <br>
-        <div mat-dialog-actions>
+    </div>
+</mat-dialog-content>
+<div mat-dialog-actions>
 
 
-            <button (click)="this.rent(data.serialNumber,selectedBeginnDate,selectedEndDate)" mat-button>Reservieren
-            </button>
+    <button (click)="this.rent(data.serialNumber,selectedBeginnDate,selectedEndDate)" *ngIf="isReservieren"
+            color="primary"
+            mat-button mat-raised-button>Reservieren
+    </button>
 
-            <button *ngIf="" mat-button>Ausborgen</button>
+    <button (click)="this.rent(data.serialNumber,selectedBeginnDate,selectedEndDate)" *ngIf="isAusborgen"
+            color="primary"
+            mat-button mat-raised-button>Ausborgen
+    </button>
 
-            <button [mat-dialog-close]="true" mat-button>Close</button>
-        </div>
+    <button [mat-dialog-close]="true" color="primary" mat-button mat-stroked-button>Close</button>
+    <br>
+</div>
+
+

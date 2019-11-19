@@ -10,3 +10,13 @@
 #example-container {
     overflow: hidden;
 }
+
+.mat-dialog-actions {
+    margin-bottom: 0 !important;
+}
+
+.pickerBox {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
