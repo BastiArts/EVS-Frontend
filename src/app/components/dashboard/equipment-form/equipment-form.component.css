@@ -37,6 +37,10 @@
   background-position: center;
 }
 
+main{
+  margin-top: 100px;
+}
+
 .cards {
   padding: 2rem;
   max-width: calc(100vw - 400px);

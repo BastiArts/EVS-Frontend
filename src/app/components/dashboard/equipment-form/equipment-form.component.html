@@ -70,7 +70,7 @@
 
       <li>
         <mat-form-field class="example-full-width" appearance="outline" appearance="outline">
-          <mat-label>Anzeigename</mat-label>
+          <mat-label>Produktdetails</mat-label>
           <mat-chip-list #chipList>
             <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
                       [removable]="removable" (removed)="remove(fruit)">
@@ -102,44 +102,7 @@
 
     </ul>
   </section>
-
-  <!-- Markenname -->
-
-
-  <!-- Produktname -->
-
-
-  <!-- Langname -->
-
-
-  <!-- Inventorynumber -->
-
-
-  <!---------------------    3. zeile     --------------------->
-
-
-  <!-- Disabled DisplayName -->
-  <!-- Klassen auswählen (multiple select) -->
-
-
-  <!---------------------    4. zeile     --------------------->
-
-  <!-- Kategorie auswählen -->
-
-
-  <!-- Chips (Details hinzufügen) -->
-
-
-  <!---------------------    5. zeile     --------------------->
-
-
-  <!-- Hinzufügen Button -->
-
-  <!---------------------    6. zeile     --------------------->
-
-
-  <!---------------------    7. zeile     --------------------->
-  <button mat-stroked-button (click)="makeNewEquipment()">Equipment
+  <button mat-flat-button (click)="makeNewEquipment()" color="primary">Equipment
     hinzufügen
   </button>
 </main>

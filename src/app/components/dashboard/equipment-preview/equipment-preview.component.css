@@ -1,47 +1,52 @@
-.itemBox{
-    position: relative;
-    width: 128px;
-    height:auto;
-    padding:10px 10px 35px 10px;
-    float:left;
-    margin: 10px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    text-align: center;
+.itemBox {
+  position: relative;
+  width: 128px;
+  height: auto;
+  padding: 10px 10px 35px 10px;
+  float: left;
+  margin: 10px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
 }
-.itemIcon{
-    height:100px;
-    background-image: url("../../../../assets/icons/equip/fujifilm-xt100_icon.png");
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 20px;
+
+.itemIcon {
+  height: 100px;
+  margin-bottom: 20px;
+  overflow: hidden;
 }
-.itemOverlay{
-    display: none;
-    opacity:0;
-    position: relative;
-    width:100%;
-    height:100%;
-    background-color: rgba(0,0,0,0.3);
-    color: white;
-    margin-bottom: 20px;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    -ms-transition: all .5s;
-    -o-transition: all .5s;
-    transition: all .5s;
+
+.itemIcon img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s;
+  transform: scale(1.2);
 }
-.itemBox:hover .itemOverlay{
-    display:block;
-    opacity:1;
+
+.itemIcon img:hover {
+  transform: scale(1.13);
 }
-.mat-chip{
-    position: absolute;
-    transform:translateX(-50%);
-    bottom: 0%;
-    left: 50%;
-    max-width: 70px;
+
+.itemOverlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: black;
+  margin-bottom: 20px;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -ms-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+}
+
+.mat-chip {
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: 0%;
+  left: 50%;
+  max-width: 70px;
 
 }
