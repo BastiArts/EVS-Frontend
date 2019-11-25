@@ -42,7 +42,6 @@ export class EquipmentOverviewComponent implements OnInit {
     }
 
     choosePhotoPath(equ: Equipment) {
-        console.log(equ);
         switch (equ.category) {
             case 'video':
                 return equ.photopath; // ? environment.domain + '/' + equ.photopath : '../assets/icons/equip/videocamera_icon.svg';
@@ -107,8 +106,8 @@ export class DialogOverviewExampleDialog {
     rent(serialNumber: any, selectedBeginnDate: Date, selectedEndDate: Date): void {
 
 
-        this.toDate = this.datepipe.transform(this.selectedEndDate, 'dd-MM-yyyy');
-        this.fromDate = this.datepipe.transform(this.selectedBeginnDate, 'dd-MM-yyyy');
+        this.toDate = this.datepipe.transform(selectedEndDate, 'dd-MM-yyyy');
+        this.fromDate = this.datepipe.transform(selectedBeginnDate, 'dd-MM-yyyy');
         this.serialNumber = serialNumber;
         // Unique identifier (e.g it150178)
         this.userid = this.dataservice.sessionUser.username;
@@ -117,7 +116,8 @@ export class DialogOverviewExampleDialog {
         this.dialogRef.close();
     }
 
-    somethingChanged(): void {
+    somethingChanged(e): void {
+        this.selectedBeginnDate = e.value;
         this.selectedEndDate = this.selectedBeginnDate > this.selectedEndDate ? this.selectedBeginnDate : this.selectedEndDate;
 
         if (this.selectedBeginnDate = this.minDate) {

@@ -16,7 +16,7 @@ export class DataService {
             role: ''
         },
         {
-            name: 'Meine Geräte',
+            name: 'Alle Geräte',
             icon: 'assignment',
             route: 'equipment',
             role: 'Student'
