@@ -1,7 +1,7 @@
 .itemBox {
   position: relative;
   width: 128px;
-  height: auto;
+  height: 128px;
   padding: 10px 10px 35px 10px;
   float: left;
   margin: 10px;
@@ -16,12 +16,15 @@
   margin-bottom: 20px;
   overflow: hidden;
   border-radius: 100%;
+  max-height: 128px;
+  max-width: 128px;
 }
 
 .itemIcon img {
-  width: 100%;
   transition: transform 0.4s;
   transform: scale(1.2);
+  max-width: 128px;
+  max-height: 128px;
 }
 
 .itemIcon img:hover {
@@ -48,4 +51,8 @@
   left: 50%;
   max-width: 70px;
 
+}
+
+.pending {
+  opacity: .5;
 }

@@ -21,7 +21,7 @@ export class TeacherDashboardComponent {
             }
             // WEB VIEW
             return [
-                {title: 'Verborgte Geräte', cols: 2, rows: 1, collapsed: false},
+                {title: 'Verborgte Geräte', cols: 2, rows: 1, collapsed: true},
                 {title: 'Anfragen', cols: 2, rows: 1, collapsed: false},
                 {title: 'Verfügbares Equpiment', cols: 1, rows: 1, collapsed: false},
                 {title: 'Equpiment hinzufügen', cols: 1, rows: 1, collapsed: false}

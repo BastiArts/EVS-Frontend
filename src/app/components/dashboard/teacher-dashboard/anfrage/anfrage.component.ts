@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Equipment} from '../../../../equipment';
 import {HttpService} from '../../../../../../services/services/http.service';
-import {Entlehnung} from "../../../../entlehnung";
+import {Entlehnung} from '../../../../entlehnung';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'Anfragen',
@@ -17,7 +17,7 @@ export class AnfrageComponent implements OnInit {
   entlehnungs: Entlehnung[];
 
 
-  constructor(private httpservice: HttpService) {
+  constructor(private httpservice: HttpService, public datepipe: DatePipe) {
     this.httpservice.getPendingRequests().subscribe(res => {
       this.entlehnungs = res;
       console.log(res);

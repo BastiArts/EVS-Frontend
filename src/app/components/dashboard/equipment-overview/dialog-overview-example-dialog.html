@@ -7,7 +7,7 @@
         <div class="pickerBox">
         <mat-form-field class="example-full-width">
             <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [max]="maxDate" [min]="minDate"
-                   (dateChange)="somethingChanged($event)"
+
                    [(ngModel)]="selectedBeginnDate" matInput placeholder="From Date:">
             <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>

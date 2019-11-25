@@ -19,18 +19,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {DataService} from '../../services/services/data.service';
 import {SidebarComponent} from './components/dashboard/sidebar/sidebar.component';
 import {LayoutModule} from '@angular/cdk/layout';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatDialogModule,
-  MatGridListModule,
-  MatIconModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatSidenavModule,
-  MatToolbarModule
-} from '@angular/material';
+import {MAT_DATE_LOCALE, MatButtonModule, MatCardModule, MatDialogModule, MatGridListModule, MatIconModule, MatListModule, MatMenuModule, MatNativeDateModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {DefaultDashboardComponent} from './components/dashboard/default-dashboard/default-dashboard.component';
 import {TeacherDashboardComponent} from './components/dashboard/teacher-dashboard/teacher-dashboard.component';
 import {EquipmentPreviewComponent} from './components/dashboard/equipment-preview/equipment-preview.component';
@@ -39,10 +28,7 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {SettingsComponent} from './components/settings/settings.component';
 import {SettingsService} from '../../services/services/settings.service';
 import {TeacherScheduleComponent} from './components/dashboard/teacher-schedule/teacher-schedule.component';
-import {
-  DialogOverviewExampleDialog,
-  EquipmentOverviewComponent
-} from './components/dashboard/equipment-overview/equipment-overview.component';
+import {DialogOverviewExampleDialog, EquipmentOverviewComponent} from './components/dashboard/equipment-overview/equipment-overview.component';
 import {EquipmentChartComponent} from './components/dashboard/equipment-chart/equipment-chart.component';
 import {GoogleChartsModule} from 'angular-google-charts';
 import {EquipmentFormComponent} from './components/dashboard/equipment-form/equipment-form.component';
@@ -99,7 +85,7 @@ import {DatePipe} from '@angular/common';
     MatDialogModule,
     GoogleChartsModule.forRoot()
   ],
-  providers: [AuthService, HttpService, DataService, SettingsService, RoleGuard, DatePipe],
+  providers: [AuthService, HttpService, DataService, SettingsService, RoleGuard, DatePipe, {provide: MAT_DATE_LOCALE, useValue: 'de-DE'}],
   entryComponents: [DialogOverviewExampleDialog],
   bootstrap: [AppComponent]
 })

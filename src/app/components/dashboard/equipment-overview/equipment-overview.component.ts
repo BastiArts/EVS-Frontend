@@ -97,10 +97,15 @@ export class DialogOverviewExampleDialog {
         this.dialogRef.close();
     }
 
+    private rentDates: Array<object> = [];
     constructor(
         public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
         @Inject(MAT_DIALOG_DATA) public data: DialogData,
         public dataservice: DataService, private http: HttpService, public datepipe: DatePipe) {
+        this.http.getRentDates(data.serialNumber).subscribe(res => {
+            this.rentDates = res;
+            console.warn(res);
+        });
     }
 
     rent(serialNumber: any, selectedBeginnDate: Date, selectedEndDate: Date): void {
@@ -116,24 +121,32 @@ export class DialogOverviewExampleDialog {
         this.dialogRef.close();
     }
 
-    somethingChanged(e): void {
-        this.selectedBeginnDate = e.value;
-        this.selectedEndDate = this.selectedBeginnDate > this.selectedEndDate ? this.selectedBeginnDate : this.selectedEndDate;
+    /*
+        somethingChanged(e): void {
+           // this.selectedBeginnDate = e.value;
+            this.selectedEndDate = this.selectedBeginnDate > this.selectedEndDate ? this.selectedBeginnDate : this.selectedEndDate;
 
-        if (this.selectedBeginnDate = this.minDate) {
-            this.isAusborgen = true;
-            this.isReservieren = false;
-        } else {
-            this.isAusborgen = false;
-            this.isReservieren = true;
+            if (this.selectedBeginnDate = this.minDate) {
+                this.isAusborgen = true;
+                this.isReservieren = false;
+            } else {
+                this.isAusborgen = false;
+                this.isReservieren = true;
+            }
+
         }
-
-    }
-
+    */
 
     myFilter = (d: Date): boolean => {
         const day = d.getDay();
         // Prevent Saturday and Sunday
+        /* this.rentDates.forEach(date => {
+             if(d >= new Date(date['fromdate']) && d <= new Date(date['todate'])){
+                 return false;
+             }else if(day !== 0 && day !== 6){
+                 return true;
+             }
+         });*/
         return day !== 0 && day !== 6;
     };
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from '../../../../../services/services/http.service';
 import {DataService} from '../../../../../services/services/data.service';
-import {Equipment} from '../../../equipment';
+import {Entlehnung} from '../../../entlehnung';
 
 @Component({
     selector: 'equipment-preview',
@@ -9,7 +9,7 @@ import {Equipment} from '../../../equipment';
     styleUrls: ['./equipment-preview.component.css']
 })
 export class EquipmentPreviewComponent implements OnInit {
-    equipment: Array<Equipment> = [];
+    entlehnungen: Array<Entlehnung> = [];
 
     constructor(public http: HttpService, public dataService: DataService) {
     }
@@ -21,7 +21,7 @@ export class EquipmentPreviewComponent implements OnInit {
 
     fetchEquipment() {
         this.http.fetchEquipment(this.dataService.sessionUser).subscribe(res => {
-            this.equipment = res;
+            this.entlehnungen = res;
         });
     }
 

@@ -1,9 +1,9 @@
-<div class="itemBox" *ngFor="let eq of this.equipment">
+<div *ngFor="let ent of this.entlehnungen" [class.pending]="ent.status === 'guarded'" class="itemBox ">
   <div class="itemIcon">
-    <img [src]="eq.photopath" alt="image of equipment">
+    <img [src]="ent.equ.photopath" alt="image of equipment">
   </div>
-  <div class="itemOverlay">{{eq.displayname}}</div>
+  <div class="itemOverlay">{{ent.equ.displayname}}</div>
   <mat-chip-list>
-    <mat-chip color="primary" selected>{{eq.internenummer}}</mat-chip>
+    <mat-chip color="primary" selected>{{ent.equ.internenummer}}</mat-chip>
   </mat-chip-list>
 </div>

@@ -19,7 +19,8 @@
   <!-- Date Column -->
   <ng-container matColumnDef="datum">
     <th *matHeaderCellDef mat-header-cell> Datum</th>
-    <td *matCellDef="let entlehnung" mat-cell> {{entlehnung.fromdate}} ------- {{entlehnung.todate}}</td>
+    <td *matCellDef="let entlehnung" mat-cell> {{this.datepipe.transform(entlehnung.fromdate, 'dd.MM.yyyy')}}
+      ------- {{this.datepipe.transform(entlehnung.todate, 'dd.MM.yyyy')}}</td>
   </ng-container>
 
   <!-- Accept (Häkchen) Column -->

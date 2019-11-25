@@ -3,10 +3,10 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
 import {User} from '../../src/app/util/app.user';
 import {Equipment} from '../../src/app/equipment';
-import {Entlehnung} from "../../src/app/entlehnung";
 
 @Injectable()
 export class HttpService {
+
   // Define a local Instance
   private http;
 
@@ -83,4 +83,8 @@ export class HttpService {
   editPendingRequests(id: number, status: string) {
     return this.http.get(environment.apiUrl + 'entlehnung/editentlehnung?id=' + id + '&status=' + status);
   }
+
+    getRentDates(serial: string): any {
+        return this.http.get(environment.apiUrl + 'entlehnung/rentDates/' + serial);
+    }
 }
