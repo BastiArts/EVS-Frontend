@@ -28,7 +28,7 @@
     <div  class="fullWidth">
       <div class = "itemsContainer">
     <div *ngFor="let equ of equipment" class = "item">
-        <mat-card class="example-card ownCss" *ngIf="equ.category==='camera'">
+        <mat-card (click)="openDialog(equ)" class="example-card ownCss" *ngIf="equ.category==='camera'">
           <img [src]="choosePhotoPath(equ)" alt="Equipmentfoto" class="equPic" mat-card-image>
           <mat-card-content><b>
             <p>
@@ -52,7 +52,7 @@
     <div class="fullWidth">
     <div class = "itemsContainer">
     <div *ngFor="let equ of equipment" class = "item">
-        <mat-card class="example-card ownCss" *ngIf="equ.category==='video'">
+        <mat-card (click)="openDialog(equ)" class="example-card ownCss" *ngIf="equ.category==='video'">
           <img [src]="choosePhotoPath(equ)" alt="Equipmentfoto" class="equPic" mat-card-image>
           <mat-card-content><b>
             <p>
@@ -100,7 +100,7 @@
     <div class="fullWidth">
       <div class = "itemsContainer">
     <div *ngFor="let equ of equipment" class = "item">
-        <mat-card class="example-card ownCss" *ngIf="equ.category==='extra'">
+        <mat-card (click)="openDialog(equ)" class="example-card ownCss" *ngIf="equ.category==='extra'">
           <img [src]="choosePhotoPath(equ)" alt="Equipmentfoto" class="equPic" mat-card-image>
           <mat-card-content><b>
             <p>

@@ -20,3 +20,15 @@
     align-content: center;
     justify-content: space-between;
 }
+
+.fotoborder{
+  width: 100%;
+  height: fit-content;
+  text-align: center;
+}
+
+.fotoborder img{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}

@@ -1,41 +1,46 @@
 <div id="wrapper">
-    <mat-card>
-        <mat-card-content>
-            <div id="avatarWrapper">
-                <div class="overlay" id="openUpload">
-                    <mat-icon>create</mat-icon>
-                </div>
-                <div mat-card-avatar class="avatar"
-                     [ngStyle]="this.dataservice.getPB()"></div>
-            </div>
-            <form (change)="uploadImage();" method="post"
-                  [action]="'http://vm88.htl-leonding.ac.at:8080/rest/users/uploadimage/' + dataservice.sessionUser.username"
-                  id="imgForm">
-                <input (change)="saveTemporalImage($event.target.files)" accept=".jpg, .png" id="imgupload"
-                       style="display:none" type="file"/>
+  <mat-card>
+    <mat-card-content>
+      <div id="avatarWrapper">
+        <div class="overlay" id="openUpload">
+          <mat-icon>create</mat-icon>
+        </div>
+        <div mat-card-avatar class="avatar"
+             [ngStyle]="this.dataservice.getPB()"></div>
+      </div>
 
-            </form>
-            <form class="info">
-                <mat-form-field>
-                    <input matInput placeholder="Vorname" disabled [value]="this.dataservice.sessionUser.firstname">
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <input matInput placeholder="Nachname" disabled [value]="this.dataservice.sessionUser.lastname">
-                </mat-form-field>
-                <br>
-                <mat-form-field *ngIf="dataservice.sessionUser.isStudent">
-                    <input matInput placeholder="Klasse" disabled [value]="this.dataservice.sessionUser.schoolclass">
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <input matInput placeholder="Email" id="mail" name="email" [(ngModel)]="this.dataservice.sessionUser.email" required
-                           (input)="edit()" type="email">
-                    <!--  [disabled] = "this.dataservice.sessionUser.email.length !== 0" -->
-                </mat-form-field>
-                <br>
-                <mat-spinner-button [options]="btnOpts" (click) = "save()"></mat-spinner-button>
-            </form>
-        </mat-card-content>
-    </mat-card>
+      <input #fileInput (change)="saveTemporalImage($event.target.files)" accept=".jpg, .png" id="imgupload"
+             style="display:none" type="file"/>
+      <!--
+      <form (change)="uploadImage($event);" method="post"
+            [action]="'http://vm88.htl-leonding.ac.at:8080/rest/users/uploadimage'"
+            id="imgForm">
+        <input (change)="saveTemporalImage($event.target.files)" accept=".jpg, .png" id="imgupload"
+               style="display:none" type="file"/>
+
+      </form> -->
+      <form class="info">
+        <mat-form-field>
+          <input matInput placeholder="Vorname" disabled [value]="this.dataservice.sessionUser.firstname">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Nachname" disabled [value]="this.dataservice.sessionUser.lastname">
+        </mat-form-field>
+        <br>
+        <mat-form-field *ngIf="dataservice.sessionUser.isStudent">
+          <input matInput placeholder="Klasse" disabled [value]="this.dataservice.sessionUser.schoolclass">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Email" id="mail" name="email" [(ngModel)]="this.dataservice.sessionUser.email"
+                 required
+                 (input)="edit()" type="email">
+          <!--  [disabled] = "this.dataservice.sessionUser.email.length !== 0" -->
+        </mat-form-field>
+        <br>
+        <mat-spinner-button [options]="btnOpts" (click)="save()"></mat-spinner-button>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
