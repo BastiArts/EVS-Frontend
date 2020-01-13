@@ -76,6 +76,9 @@ export class DataService {
   }
 
   getPB() {
-    return {'background-image': 'url(' + this.sessionUser.picturePath + ')'};
+    if (this.sessionUser.picturePath === '') {
+      return {'background-image': 'url(../../assets/avatars/default.jpg)'};
+    }
+    return {'background-image': 'url(http://vm88.htl-leonding.ac.at/' + this.sessionUser.picturePath + ')'};
   }
 }

@@ -84,7 +84,7 @@ export class HttpService {
     return this.http.get(environment.apiUrl + 'entlehnung/editentlehnung?id=' + id + '&status=' + status);
   }
 
-    getRentDates(serial: string): any {
-        return this.http.get(environment.apiUrl + 'entlehnung/rentDates/' + serial);
-    }
+  getRentDates(serial: string): any {
+    return this.http.get(environment.apiUrl + 'entlehnung/rentDates/' + serial);
+  }
 }

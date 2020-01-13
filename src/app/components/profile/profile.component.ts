@@ -72,7 +72,9 @@ export class ProfileComponent implements OnInit {
       formData.append('userid', this.dataservice.sessionUser.username);
       this.http.uploadPB(formData).subscribe(res => {
           /* tslint:disable:no-string-literal */
-          console.log(res);
+          this.dataservice.sessionUser = res;
+          console.log(this.dataservice.sessionUser);
+          localStorage.setItem('user', JSON.stringify(this.dataservice.sessionUser))
         },
         err => {
           console.log(err);
