@@ -87,4 +87,9 @@ export class HttpService {
     getRentDates(serial: string): any {
         return this.http.get(environment.apiUrl + 'entlehnung/rentDates/' + serial);
     }
+
+    // Alle Schüler (it-Nummer und Vor- und Nachname)
+    getAllStudents() {
+    return this.http.get(environment.apiUrl + 'users/getAllStudents');
+    }
 }

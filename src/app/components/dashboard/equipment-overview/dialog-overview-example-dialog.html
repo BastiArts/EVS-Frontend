@@ -8,7 +8,7 @@
         <mat-form-field class="example-full-width">
             <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [max]="maxDate" [min]="minDate"
 
-                   [(ngModel)]="selectedBeginnDate" matInput placeholder="From Date:">
+                   [(ngModel)]="selectedBeginnDate" matInput placeholder="From Date:" (ngModelChange)="somethingChanged(selectedBeginnDate)" >
             <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -36,6 +36,27 @@
 
         <br>
     </div>
+
+  <div *ngIf="!this.dataservice.sessionUser.isStudent">
+
+    <p>
+      <mat-checkbox class="example-margin" [(ngModel)]="checked">Für mich</mat-checkbox></p>
+
+    <div *ngIf="!checked">
+
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Schüler" aria-label="Schüler" [matAutocomplete]="auto" [formControl]="stateCtrl">
+        <mat-autocomplete #auto="matAutocomplete" ([ngModel])="userid">
+          <mat-option *ngFor="let user of filteredUser | async" [value]="user.username">
+            <span>{{user.username}}</span> |
+            <small> {{user.firstname}} {{user.lastname}}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    </div>
+  </div>
 </mat-dialog-content>
 <div mat-dialog-actions>
 
