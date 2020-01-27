@@ -25,6 +25,7 @@
 
 mat-card{
   padding: 30px 0 0 0;
+  text-align: center;
 }
 
 .example-card {
@@ -48,6 +49,9 @@ mat-card{
   width: 10vw;
   height: 10vw;
   border-radius: 100%;
+  overflow: hidden;
+  background-size: contain;
+  margin: 0 auto 40px;
 }
 
 .hervorhebung {

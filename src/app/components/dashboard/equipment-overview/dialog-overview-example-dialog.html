@@ -1,60 +1,59 @@
-<div class="fotoborder">
-  <img [src]="data.photopath" alt="Image of Equipment">
+<div class="fotoborder" [ngStyle]="choosePhotoPath(data)">
 </div>
 <h1 mat-dialog-title> {{data.brand}} {{data.name}}</h1>
 
 
 <mat-dialog-content>
 
-    <div id="example-container">
-        <div class="pickerBox">
-        <mat-form-field class="example-full-width">
-            <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [max]="maxDate" [min]="minDate"
+  <div id="example-container">
+    <div class="pickerBox">
+      <mat-form-field class="example-full-width">
+        <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [max]="maxDate" [min]="minDate"
 
-                   [(ngModel)]="selectedBeginnDate" matInput placeholder="From Date:">
-            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+               [(ngModel)]="selectedBeginnDate" matInput placeholder="From Date:">
+        <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-        <br>
-        <br>
-        <mat-form-field class="example-full-width">
+      <br>
+      <br>
+      <mat-form-field class="example-full-width">
 
-            <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker2" [max]="maxDate" [min]="minDate"
-                   [(ngModel)]="selectedEndDate"
-                   matInput placeholder="To Date:">
-            <mat-datepicker-toggle [for]="picker2" matSuffix></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-        </mat-form-field>
-        </div>
-        <br>
-
-        <br>
-        <br>
-        <b>Marke</b>: {{data.brand}}
-
-        <br>
-        <b>Name :</b> {{data.name}}
-
-
-        <br>
+        <input [matDatepickerFilter]="myFilter" [matDatepicker]="picker2" [max]="maxDate" [min]="minDate"
+               [(ngModel)]="selectedEndDate"
+               matInput placeholder="To Date:">
+        <mat-datepicker-toggle [for]="picker2" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
     </div>
+    <br>
+
+    <br>
+    <br>
+    <b>Marke</b>: {{data.brand}}
+
+    <br>
+    <b>Name :</b> {{data.name}}
+
+
+    <br>
+  </div>
 </mat-dialog-content>
 <div mat-dialog-actions>
 
 
-    <button (click)="this.rent(data.serialNumber,selectedBeginnDate,selectedEndDate)" *ngIf="isReservieren"
-            color="primary"
-            mat-button mat-raised-button>Reservieren
-    </button>
+  <button (click)="this.rent(this.data.serialnumber,selectedBeginnDate,selectedEndDate)" *ngIf="isReservieren"
+          color="primary"
+          mat-button mat-raised-button>Reservieren
+  </button>
 
-    <button (click)="this.rent(data.serialNumber,selectedBeginnDate,selectedEndDate)" *ngIf="isAusborgen"
-            color="primary"
-            mat-button mat-raised-button>Ausborgen
-    </button>
+  <button (click)="this.rent(this.data.serialnumber,selectedBeginnDate,selectedEndDate)" *ngIf="isAusborgen"
+          color="primary"
+          mat-button mat-raised-button>Ausborgen
+  </button>
 
-    <button [mat-dialog-close]="true" color="primary" mat-button mat-stroked-button>Close</button>
-    <br>
+  <button [mat-dialog-close]="true" color="primary" mat-button mat-stroked-button>Close</button>
+  <br>
 </div>
 
 

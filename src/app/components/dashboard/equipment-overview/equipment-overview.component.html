@@ -2,20 +2,21 @@
 
   <mat-tab label="Alles">
     <div class="fullWidth">
-      <div class = "itemsContainer">
-    <div *ngFor="let equ of equipment" class = "item">
-      <mat-card (click)="openDialog(equ)" class="example-card ownCss">
-        <img [src]="choosePhotoPath(equ)" alt="Equipmentfoto" class="equPic" mat-card-image>
-        <mat-card-content><b>
-          <!--<p>-->
-            {{equ.category.toUpperCase()}}
-          <!--</p>-->
-          <p>
-            {{equ.displayname}}
-          </p></b>
-        </mat-card-content>
-      </mat-card>
-      </div>
+      <div class="itemsContainer">
+        <div *ngFor="let equ of equipment" class="item">
+          <mat-card (click)="openDialog(equ)" class="example-card ownCss">
+            <div class="equPic" [ngStyle]="choosePhotoPath(equ)">
+            </div>
+            <mat-card-content><b>
+              <!--<p>-->
+              {{equ.category.toUpperCase()}}
+              <!--</p>-->
+              <p>
+                {{equ.displayname}}
+              </p></b>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </div>
     </div>
   </mat-tab>
@@ -25,22 +26,23 @@
       <mat-icon class="example-tab-icon">camera_alt</mat-icon>
       Fotokamera 
     </ng-template>
-    <div  class="fullWidth">
-      <div class = "itemsContainer">
-    <div *ngFor="let equ of equipment" class = "item">
-        <mat-card (click)="openDialog(equ)" class="example-card ownCss" *ngIf="equ.category==='camera'">
-          <img [src]="choosePhotoPath(equ)" alt="Equipmentfoto" class="equPic" mat-card-image>
-          <mat-card-content><b>
-            <p>
+    <div class="fullWidth">
+      <div class="itemsContainer">
+        <div *ngFor="let equ of equipment" class="item">
+          <mat-card (click)="openDialog(equ)" class="example-card ownCss" *ngIf="equ.category==='camera'">
+            <div class="equPic" [ngStyle]="choosePhotoPath(equ)">
+            </div>
+            <mat-card-content><b>
+              <!--<p>-->
               {{equ.category.toUpperCase()}}
-            </p>
-            <p>
-              {{equ.brand}} {{equ.name}}
-            </p></b>
-          </mat-card-content>
-        </mat-card>
+              <!--</p>-->
+              <p>
+                {{equ.displayname}}
+              </p></b>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </div>
-    </div>
     </div>
   </mat-tab>
 
@@ -50,21 +52,22 @@
       Videokamera
     </ng-template>
     <div class="fullWidth">
-    <div class = "itemsContainer">
-    <div *ngFor="let equ of equipment" class = "item">
-        <mat-card (click)="openDialog(equ)" class="example-card ownCss" *ngIf="equ.category==='video'">
-          <img [src]="choosePhotoPath(equ)" alt="Equipmentfoto" class="equPic" mat-card-image>
-          <mat-card-content><b>
-            <p>
+      <div class="itemsContainer">
+        <div *ngFor="let equ of equipment" class="item">
+          <mat-card (click)="openDialog(equ)" class="example-card ownCss" *ngIf="equ.category==='videokamera'">
+            <div class="equPic" [ngStyle]="choosePhotoPath(equ)">
+            </div>
+            <mat-card-content><b>
+              <!--<p>-->
               {{equ.category.toUpperCase()}}
-            </p>
-            <p>
-              {{equ.displayname}}
-            </p></b>
-          </mat-card-content>
-        </mat-card>
+              <!--</p>-->
+              <p>
+                {{equ.displayname}}
+              </p></b>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </div>
-    </div>
     </div>
   </mat-tab>
 
@@ -74,21 +77,22 @@
       Audiogeräte
     </ng-template>
     <div class="fullWidth">
-      <div class = "itemsContainer">
-    <div *ngFor="let equ of equipment" class = "item">
-      <mat-card (click)="openDialog(equ)" *ngIf="equ.category==='audio'" class="example-card ownCss">
-        <img [src]="choosePhotoPath(equ)" alt="Equipmentfoto" class="equPic" mat-card-image>
-          <mat-card-content><b>
-            <p>
+      <div class="itemsContainer">
+        <div *ngFor="let equ of equipment" class="item">
+          <mat-card (click)="openDialog(equ)" *ngIf="equ.category==='audio'" class="example-card ownCss">
+            <div class="equPic" [ngStyle]="choosePhotoPath(equ)">
+            </div>
+            <mat-card-content><b>
+              <!--<p>-->
               {{equ.category.toUpperCase()}}
-            </p>
-            <p>
-              {{equ.displayname}}
-            </p></b>
-          </mat-card-content>
-        </mat-card>
+              <!--</p>-->
+              <p>
+                {{equ.displayname}}
+              </p></b>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </div>
-    </div>
     </div>
   </mat-tab>
 
@@ -98,21 +102,22 @@
       Zubehör 
     </ng-template>
     <div class="fullWidth">
-      <div class = "itemsContainer">
-    <div *ngFor="let equ of equipment" class = "item">
-        <mat-card (click)="openDialog(equ)" class="example-card ownCss" *ngIf="equ.category==='extra'">
-          <img [src]="choosePhotoPath(equ)" alt="Equipmentfoto" class="equPic" mat-card-image>
-          <mat-card-content><b>
-            <p>
+      <div class="itemsContainer">
+        <div *ngFor="let equ of equipment" class="item">
+          <mat-card (click)="openDialog(equ)" class="example-card ownCss" *ngIf="equ.category==='extra'">
+            <div class="equPic" [ngStyle]="choosePhotoPath(equ)">
+            </div>
+            <mat-card-content><b>
+              <!--<p>-->
               {{equ.category.toUpperCase()}}
-            </p>
-            <p>
-              {{equ.displayname}}
-            </p></b>
-          </mat-card-content>
-        </mat-card>
+              <!--</p>-->
+              <p>
+                {{equ.displayname}}
+              </p></b>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </div>
-    </div>
     </div>
   </mat-tab>
 

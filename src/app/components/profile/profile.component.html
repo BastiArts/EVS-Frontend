@@ -11,14 +11,8 @@
 
       <input #fileInput (change)="saveTemporalImage($event.target.files)" accept=".jpg, .png" id="imgupload"
              style="display:none" type="file"/>
-      <!--
-      <form (change)="uploadImage($event);" method="post"
-            [action]="'http://vm88.htl-leonding.ac.at:8080/rest/users/uploadimage'"
-            id="imgForm">
-        <input (change)="saveTemporalImage($event.target.files)" accept=".jpg, .png" id="imgupload"
-               style="display:none" type="file"/>
 
-      </form> -->
+
       <form class="info">
         <mat-form-field>
           <input matInput placeholder="Vorname" disabled [value]="this.dataservice.sessionUser.firstname">

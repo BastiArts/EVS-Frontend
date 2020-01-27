@@ -3,7 +3,5 @@
     <img [src]="ent.equ.photopath" alt="image of equipment">
   </div>
   <div class="itemOverlay">{{ent.equ.displayname}}</div>
-  <mat-chip-list>
-    <mat-chip color="primary" selected>{{ent.equ.internenummer}}</mat-chip>
-  </mat-chip-list>
+  <div>{{datepipe.transform(ent.todate, 'dd.MM.yyyy')}}</div>
 </div>

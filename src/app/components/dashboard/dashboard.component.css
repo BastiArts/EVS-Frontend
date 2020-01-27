@@ -16,3 +16,6 @@
     height:200px;
     margin:0 auto;
 }
+#wrapper{
+  height: 100vh;
+}

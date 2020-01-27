@@ -44,11 +44,6 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('loggedIn', 'true');
           this.dataservice.sessionUser = res;
           localStorage.setItem('user', JSON.stringify(this.dataservice.sessionUser));
-          if (this.dataservice.sessionUser.picturePath.toString() === '') {
-            this.dataservice.sessionUser.picturePath = '../../../../assets/avatars/default.jpg';
-          } else {
-            this.dataservice.sessionUser.picturePath = 'http://vm88.htl-leonding.ac.at/' + this.dataservice.sessionUser.picturePath;
-          }
           if ((<Boolean>res['isStudent'])) {
             this.dataservice.filteredNavItems = this.dataservice.navItems.filter(i => i['role'] !== 'Teacher');
           } else {

@@ -37,7 +37,7 @@
   background-position: center;
 }
 
-main{
+main {
   margin-top: 100px;
 }
 
@@ -53,8 +53,12 @@ main{
   list-style-type: none;
 }
 
-.cards > ul > li{
+.cards > ul > li {
   max-width: 100%;
+}
+
+button {
+  margin-left: calc(100vw - 512px - 2rem);
 }
 
 @media (min-width: 0px) and (max-width: 600px) {
@@ -76,7 +80,7 @@ main{
     margin: 0 auto 30px 10%;
   }
 
-  .cards > ul{
+  .cards > ul {
     margin: 0;
     padding: 0;
     position: relative;

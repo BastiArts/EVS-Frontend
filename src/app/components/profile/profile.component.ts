@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   constructor(public dataservice: DataService, private http: HttpService, private snackBar: MatSnackBar) {
   }
 
-  avatarImage = {name: ''};
+  avatarImage = null;
   mail: String;
   btnOpts: MatProgressButtonOptions = {
     active: false,
@@ -54,10 +54,17 @@ export class ProfileComponent implements OnInit {
     if (!this.btnOpts.disabled) {
       this.btnOpts.active = true;
       // Wait for the Server's response
-      this.uploadImage([this.avatarImage]);
-      this.btnOpts.active = false;
-      this.btnOpts.disabled = true;
-      this.btnOpts.text = 'Gespeichert';
+      this.http.mergeUser(this.dataservice.sessionUser).subscribe(res => {
+        if (this.avatarImage !== null) {
+          this.uploadImage([this.avatarImage]);
+        } else {
+          this.dataservice.sessionUser = res;
+          localStorage.setItem('user', JSON.stringify(res));
+        }
+        this.btnOpts.active = false;
+        this.btnOpts.disabled = true;
+        this.btnOpts.text = 'Gespeichert';
+      });
     }
   }
 
@@ -73,8 +80,8 @@ export class ProfileComponent implements OnInit {
       this.http.uploadPB(formData).subscribe(res => {
           /* tslint:disable:no-string-literal */
           this.dataservice.sessionUser = res;
-          console.log(this.dataservice.sessionUser);
-          localStorage.setItem('user', JSON.stringify(this.dataservice.sessionUser))
+          localStorage.setItem('user', JSON.stringify(this.dataservice.sessionUser));
+          this.snackBar.open('Profilbild wurde erfolgreich aktualisiert!', 'Super', {duration: 3000});
         },
         err => {
           console.log(err);
@@ -84,6 +91,7 @@ export class ProfileComponent implements OnInit {
   }
 
   saveTemporalImage(event) {
+    this.edit();
     this.avatarImage = event[0];
     // TEMP IMAGE
     const reader = new FileReader();

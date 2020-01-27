@@ -50,8 +50,8 @@ export class HttpService {
     return this.http.post(environment.apiUrl + 'equipment/deleteEquipment', e);
   }
 
-  updateEquipment(e: Equipment) {
-    return this.http.put(environment.apiUrl + 'equipment/updateEquipment', e);
+  mergeUser(u: User) {
+    return this.http.post(environment.apiUrl + 'users/updateUser', u);
   }
 
   addEquipment(e: Equipment) {

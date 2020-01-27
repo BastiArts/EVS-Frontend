@@ -1,10 +1,10 @@
-<div style="position: relative; height: 100vh; width: 0; float: left;"></div>
 <div class="outerUpload"
      matTooltip="Please Use A Picture with ratio 1:1">
   <div (click)="fileInput.click()" class="innerUpload">
     <input #fileInput (change)="saveTemporalImage($event.target.files)" hidden type="file">
   </div>
 </div>
+
 <main class="wrapper">
   <section class="cards">
     <ul>
@@ -103,7 +103,8 @@
 
     </ul>
   </section>
-  <button mat-flat-button (click)="makeNewEquipment()" color="primary">Equipment
+  <button mat-flat-button (click)="makeNewEquipment()" color="primary" [disabled]="mainButtonDisabled">Equipment
     hinzufügen
   </button>
 </main>
+

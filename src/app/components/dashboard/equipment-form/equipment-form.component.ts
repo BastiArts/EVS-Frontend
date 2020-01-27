@@ -15,7 +15,7 @@ export interface Detail {
   styleUrls: ['./equipment-form.component.css']
 })
 export class EquipmentFormComponent implements OnInit {
-  private productImage = {name: ''};
+  private productImage = null;
   brand: string = '';
   name: string = '';
   category: string = '';
@@ -38,8 +38,13 @@ export class EquipmentFormComponent implements OnInit {
   fruits: Detail[] = [
     {name: 'useful'}
   ];
+  mainButtonDisabled = false;
 
   constructor(private http: HttpService, private snackBar: MatSnackBar) {
+  }
+
+  ngOnInit() {
+    this.classes.setValue(this.classList);
   }
 
   resetForm() {
@@ -99,21 +104,24 @@ export class EquipmentFormComponent implements OnInit {
         i++;
       }
     }
-    this.http.addEquipment(new Equipment(this.internal, this.editCategory(this.category), this.name, this.brand, this.displayname, this.serial, this.usableClasses, this.getSpecs(), this.longname, this.inventorynumber)).subscribe(res => {
-      alert(res);
-      this.uploadImage([this.productImage]);
+    this.mainButtonDisabled = true;
+
+    this.http.addEquipment(new Equipment(0, this.editCategory(this.category), this.name, this.brand, this.internal, this.serial, this.usableClasses, '', this.specs, this.displayname, this.longname, this.inventorynumber)).subscribe(res => {
+      console.log(res);
+      if (this.productImage !== null) {
+        this.uploadImage([this.productImage]);
+      } else {
+        this.snackBar.open('Equipment wurde hinzugefügt', 'Super!', {duration: 3000});
+        setTimeout(function () {
+          window.location.reload();
+        }, 2500);
+      }
     });
     // this.resetForm();
   }
 
-  getSpecs(): string[] {
-    for (let s of this.fruits) {
-      this.specs.push(s.name);
-    }
-    return this.specs;
-  }
+  editClasses() {
 
-  ngOnInit() {
   }
 
   saveTemporalImage(event) {
@@ -124,14 +132,14 @@ export class EquipmentFormComponent implements OnInit {
 
     reader.onload = function (e) {
       // document.getElementById('previewIMG').setAttribute('src', e.target.result);
-      document.getElementsByClassName('innerUpload')[0].setAttribute('style',
-        'background-image: url(\'' + e.target.result + '\')');
-
+      // ts-ignore
+      document.getElementsByClassName('innerUpload')[0].setAttribute('style', 'background-image: url(\'' + e.target.result + '\')');
     };
     reader.readAsDataURL(event[0]);
   }
 
   uploadImage(event) {
+    console.log('Uploading image');
     const formData = new FormData();
     // tslint:disable-next-line:prefer-for-of
     for (let index = 0; index < event.length; index++) {
@@ -141,11 +149,10 @@ export class EquipmentFormComponent implements OnInit {
       this.http.uploadImage(formData).subscribe(res => {
           /* tslint:disable:no-string-literal */
           if (res['status'] === 'success') {
-            this.snackBar.open('Image: ' + res['filename'] + ' successfully uploaded.', '✔');
+            this.snackBar.open('Image: ' + res['filename'] + ' successfully uploaded.', '✔', {duration: 0});
           } else {
-            this.snackBar.open('ERROR: ' + res['exception'], 'Try again');
+            this.snackBar.open('ERROR: ' + res['exception'], 'Try again', {duration: 0});
           }
-          setTimeout(() => this.snackBar.dismiss(), 1000);
         },
         err => {
           console.log(err);
