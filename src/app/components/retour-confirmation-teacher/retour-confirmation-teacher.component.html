@@ -1,0 +1,8 @@
+<h3>
+  Der Schüler {{entlehnung.user.firstname}} {{entlehnung.user.lastname}} hat das
+  Equipment {{entlehnung.equ.displayname}} zurückgegeben ist das
+  richtig?<br>
+  Wenn dies der Fall ist bitte bestätigen Sie dies, indem Sie auf den Button klicken.
+</h3>
+
+<button mat-stroked-button color="primary" [disabled]="buttonDisabled" (click)="onButtonClick()">Bestätigen</button>

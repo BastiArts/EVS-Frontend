@@ -12,4 +12,7 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {
   }
 
+  getPremiumNow(){
+    window.location.assign('vm88.htl-leonding.ac.at');
+  }
 }

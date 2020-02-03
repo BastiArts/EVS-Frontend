@@ -13,45 +13,47 @@ import {RoleGuard} from '../../services/services/role.guard';
 import {EquipmentInfoComponent} from './components/equipment-info/equipment-info.component';
 import {EquipmentFormComponent} from './components/dashboard/equipment-form/equipment-form.component';
 import {LogViewComponent} from './components/log-view/log-view.component';
+import {RetourConfirmationTeacherComponent} from "./components/retour-confirmation-teacher/retour-confirmation-teacher.component";
 
 // Contains all the Routes, which can be navigated to
 const routes: Routes = [
-    // Fallback route if logged in
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
-    // Dashboard with Subroutes
-    {
-        path: 'dashboard', component: DashboardComponent, canActivate: [AuthService], children: [
-            // {path: '', component: this.dataservice.sessionUser.isStudent ? DefaultDashboardComponent : TeacherDashboardComponent},
-            {path: '', component: DefaultDashboardComponent},
-            {path: 'equipment', component: EquipmentOverviewComponent},
-            {path: 'leihen', component: EquipmentOverviewComponent},
-            {path: 'logout', component: LogoutComponent},
-            {path: 'profil', component: ProfileComponent},
-            {path: 'settings', component: SettingsComponent},
-            {path: '**', redirectTo: 'dashboard'}
-        ]
-    },
+  // Fallback route if logged in
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  // Dashboard with Subroutes
+  {
+    path: 'dashboard', component: DashboardComponent, canActivate: [AuthService], children: [
+      // {path: '', component: this.dataservice.sessionUser.isStudent ? DefaultDashboardComponent : TeacherDashboardComponent},
+      {path: '', component: DefaultDashboardComponent},
+      {path: 'equipment', component: EquipmentOverviewComponent},
+      {path: 'leihen', component: EquipmentOverviewComponent},
+      {path: 'logout', component: LogoutComponent},
+      {path: 'profil', component: ProfileComponent},
+      {path: 'settings', component: SettingsComponent},
+      {path: '**', redirectTo: 'dashboard'}
+    ]
+  },
 
-    {
-        path: 'teacher', component: DashboardComponent, canActivate: [RoleGuard], children: [
-            {path: '', component: TeacherDashboardComponent},
-            {path: 'logout', component: LogoutComponent},
-            {path: 'profil', component: ProfileComponent},
-            {path: 'equipment', component: EquipmentOverviewComponent},
-            {path: 'add', component: EquipmentFormComponent},
-            {path: 'log', component: LogViewComponent},
-            {path: 'settings', component: SettingsComponent}
-        ]
-    },
-    {path: 'bla', component: EquipmentInfoComponent},
-    {path: 'home', component: HomepageComponent},
-    // Fallback route if not logged in
-    {path: '**', redirectTo: 'home'}
+  {
+    path: 'teacher', component: DashboardComponent, canActivate: [RoleGuard], children: [
+      {path: '', component: TeacherDashboardComponent},
+      {path: 'logout', component: LogoutComponent},
+      {path: 'profil', component: ProfileComponent},
+      {path: 'equipment', component: EquipmentOverviewComponent},
+      {path: 'add', component: EquipmentFormComponent},
+      {path: 'log', component: LogViewComponent},
+      {path: 'settings', component: SettingsComponent},
+      {path: 'confirmation', component: RetourConfirmationTeacherComponent}
+    ]
+  },
+  {path: 'bla', component: EquipmentInfoComponent},
+  {path: 'home', component: HomepageComponent},
+  // Fallback route if not logged in
+  {path: '**', redirectTo: 'home'}
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 
 // @ts-ignore

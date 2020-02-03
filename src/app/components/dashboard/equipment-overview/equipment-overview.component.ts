@@ -4,6 +4,8 @@ import {DataService} from '../../../../../services/services/data.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {HttpService} from '../../../../../services/services/http.service';
 import {DatePipe} from '@angular/common';
+import {Entlehnung} from "../../../entlehnung";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 export interface DialogData {
   interneNummer?: string;
@@ -27,6 +29,7 @@ export class EquipmentOverviewComponent implements OnInit {
 
 
   equipment: Equipment[];
+  entlehnungen: Entlehnung[];
 
 
   constructor(public dataservice: DataService, public dialog: MatDialog, private httpService: HttpService) {
@@ -71,12 +74,12 @@ export class EquipmentOverviewComponent implements OnInit {
     const style = {
       'background-image': 'url(' + temp + ')',
       'background-repeat': 'no-repeat',
-      'background-size': 'cover'
+      'background-size': 'cover',
+      'background-position': 'center'
     };
 
     return style;
   }
-
 }
 
 @Component({
@@ -104,7 +107,7 @@ export class DialogOverviewExampleDialog implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    public dataservice: DataService, private http: HttpService, public datepipe: DatePipe) {
+    public dataservice: DataService, private http: HttpService, public datepipe: DatePipe, private snackbar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -121,7 +124,8 @@ export class DialogOverviewExampleDialog implements OnInit {
     this.serialNumber = serialNumber;
     // Unique identifier (e.g it150178)
     this.userid = this.dataservice.sessionUser.username;
-    this.http.rentEquipment(this.userid, serialNumber, this.fromDate, this.toDate).subscribe(res => console.log(res));
+    this.http.rentEquipment(this.userid, serialNumber, this.fromDate, this.toDate).subscribe();
+    this.snackbar.open('Eine Anfrage wurde an den Lehrer geschickt!', 'Ok', {duration: 3000});
     this.dialogRef.close();
   }
 
@@ -172,13 +176,13 @@ export class DialogOverviewExampleDialog implements OnInit {
   myFilter = (d: Date): boolean => {
     const day = d.getDay();
     // Prevent Saturday and Sunday
-    /* this.rentDates.forEach(date => {
-         if(d >= new Date(date['fromdate']) && d <= new Date(date['todate'])){
-             return false;
-         }else if(day !== 0 && day !== 6){
-             return true;
-         }
-     });*/
+    this.rentDates.forEach(date => {
+      if (d >= new Date(date['fromdate']) && d <= new Date(date['todate'])) {
+        return false;
+      } else if (day !== 0 && day !== 6) {
+        return true;
+      }
+    });
     return day !== 0 && day !== 6;
   };
 

@@ -1,0 +1,48 @@
+<div class="body">
+  <button mat-fab class="close" (click)="dialogRef.close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <div class="headerphoto">
+    <img [src]="data.equ.photopath" alt="data.equ.displayname">
+  </div>
+
+  <div class="content">
+    <h2>{{data.equ.displayname}}</h2>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let panel of panelValues" (opened)="changeValue(panel)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{panel.title}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name</th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="value">
+            <th mat-header-cell *matHeaderCellDef> Value</th>
+            <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+  </div>
+
+  <button mat-stroked-button (click)="retourEquipment()" class="retourbutton">
+    <mat-icon>settings_backup_restore</mat-icon>
+    Zurückbringen
+  </button>
+</div>

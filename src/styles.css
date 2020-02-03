@@ -8,4 +8,4 @@
     src: url('./assets/fonts/NexaLight.otf');
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Nexa Light', "Helvetica Neue", sans-serif; }

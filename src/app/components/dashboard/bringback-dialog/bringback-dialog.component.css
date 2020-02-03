@@ -1,0 +1,60 @@
+.body {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  position: relative;
+  font-family: "Nexa Light", serif !important;
+}
+
+.headerphoto {
+  height: 45%;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.headerphoto img {
+  max-height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.content {
+  width: 95%;
+  max-width: 800px;
+  margin: 30px auto 0;
+  position: relative;
+  top: 30px;
+}
+
+.close {
+  font-size: 1.3em;
+  z-index: 300;
+  position: absolute;
+  right: 0;
+  background-color: white !important;
+  box-shadow: none !important;
+}
+
+.close mat-icon {
+  color: black;
+}
+
+.close mat-icon svg {
+  fill: black;
+  color: black;
+}
+
+.retourbutton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: white !important;
+}
+
+table {
+  width: 100%;
+  box-shadow: none !important;
+  z-index: 300;
+}

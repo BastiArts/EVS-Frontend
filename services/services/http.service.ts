@@ -3,6 +3,8 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
 import {User} from '../../src/app/util/app.user';
 import {Equipment} from '../../src/app/equipment';
+import {Observable} from "rxjs";
+import {Entlehnung} from "../../src/app/entlehnung";
 
 @Injectable()
 export class HttpService {
@@ -86,5 +88,17 @@ export class HttpService {
 
   getRentDates(serial: string): any {
     return this.http.get(environment.apiUrl + 'entlehnung/rentDates/' + serial);
+  }
+
+  returnEntlehnung(id: number): any {
+    return this.http.get(environment.apiUrl + 'entlehnung/retour/' + id);
+  }
+
+  getSingleEntlehnung(id: number): Observable<Entlehnung> {
+    return this.http.get(environment.apiUrl + 'entlehnung/getSingleEntlehnung/' + id);
+  }
+
+  confirmEntlehnung(id: number): any{
+    return this.http.get(environment.apiUrl + 'entlehnung/confirmEntlehnung/' + id);
   }
 }

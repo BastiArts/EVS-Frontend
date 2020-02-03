@@ -51,6 +51,8 @@ import {EquipmentInfoComponent} from './components/equipment-info/equipment-info
 import {AnfrageComponent} from './components/dashboard/teacher-dashboard/anfrage/anfrage.component';
 import {LogViewComponent} from './components/log-view/log-view.component';
 import {DatePipe} from '@angular/common';
+import {BringbackDialogComponent} from './components/dashboard/bringback-dialog/bringback-dialog.component';
+import { RetourConfirmationTeacherComponent } from './components/retour-confirmation-teacher/retour-confirmation-teacher.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import {DatePipe} from '@angular/common';
     EquipmentInfoComponent,
     DialogOverviewExampleDialog,
     AnfrageComponent,
-    LogViewComponent
+    LogViewComponent,
+    BringbackDialogComponent,
+    RetourConfirmationTeacherComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +106,7 @@ import {DatePipe} from '@angular/common';
     provide: MAT_DATE_LOCALE,
     useValue: 'de-DE'
   }],
-  entryComponents: [DialogOverviewExampleDialog],
+  entryComponents: [DialogOverviewExampleDialog, BringbackDialogComponent],
   bootstrap: [AppComponent]
 })
 

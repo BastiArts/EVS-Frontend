@@ -39,6 +39,7 @@ export class EquipmentFormComponent implements OnInit {
     {name: 'useful'}
   ];
   mainButtonDisabled = false;
+  snackBarRef = null;
 
   constructor(private http: HttpService, private snackBar: MatSnackBar) {
   }
@@ -85,18 +86,6 @@ export class EquipmentFormComponent implements OnInit {
 
 
   makeNewEquipment() {
-
-    /*
-    * was haben wir bis jezt für Equipment:
-    *   + internal
-    *   + category
-    *   + name
-    *   + brand
-    *   + displayname
-    *   + usableClasses
-    *   + price
-    *   - specs
-    * */
     let i = 0;
     for (let useClass of this.classList) {
       if (useClass === this.classes.value[i]) {
@@ -111,17 +100,10 @@ export class EquipmentFormComponent implements OnInit {
       if (this.productImage !== null) {
         this.uploadImage([this.productImage]);
       } else {
-        this.snackBar.open('Equipment wurde hinzugefügt', 'Super!', {duration: 3000});
-        setTimeout(function () {
-          window.location.reload();
-        }, 2500);
+        this.snackBar.open('Equipment wurde hinzugefügt', 'Super!', {duration: 0});
+        this.resetForm();
       }
     });
-    // this.resetForm();
-  }
-
-  editClasses() {
-
   }
 
   saveTemporalImage(event) {
@@ -147,12 +129,8 @@ export class EquipmentFormComponent implements OnInit {
       formData.append('file', element, element.name);
       formData.append('serialnumber', this.serial);
       this.http.uploadImage(formData).subscribe(res => {
-          /* tslint:disable:no-string-literal */
-          if (res['status'] === 'success') {
-            this.snackBar.open('Image: ' + res['filename'] + ' successfully uploaded.', '✔', {duration: 0});
-          } else {
-            this.snackBar.open('ERROR: ' + res['exception'], 'Try again', {duration: 0});
-          }
+          this.snackBar.open('Image successfully uploaded.', '✔', {duration: 0});
+          this.resetForm();
         },
         err => {
           console.log(err);

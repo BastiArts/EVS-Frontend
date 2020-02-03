@@ -20,7 +20,6 @@ export class AnfrageComponent implements OnInit {
   constructor(private httpservice: HttpService, public datepipe: DatePipe) {
     this.httpservice.getPendingRequests().subscribe(res => {
       this.entlehnungs = res;
-      console.log(res);
     });
   }
 

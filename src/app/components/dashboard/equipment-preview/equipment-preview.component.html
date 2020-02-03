@@ -1,4 +1,4 @@
-<div *ngFor="let ent of this.entlehnungen" [class.pending]="ent.status === 'guarded'" class="itemBox ">
+<div *ngFor="let ent of this.entlehnungen" [class.pending]="ent.status === 'guarded'" class="itemBox " (click)="openDialog(ent)">
   <div class="itemIcon">
     <img [src]="ent.equ.photopath" alt="image of equipment">
   </div>
