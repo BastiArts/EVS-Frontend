@@ -6,6 +6,10 @@ import {HttpService} from '../../../../../services/services/http.service';
 import {DatePipe} from '@angular/common';
 import {Entlehnung} from "../../../entlehnung";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {User} from "../../../user";
+import {FormControl} from "@angular/forms";
+import {Observable} from "rxjs";
+import {map, startWith} from "rxjs/operators";
 
 export interface DialogData {
   interneNummer?: string;
@@ -96,7 +100,11 @@ export class DialogOverviewExampleDialog implements OnInit {
   fromDate = '';
   toDate = '';
   serialNumber;
+  filteredUser: Observable<User[]>;
+  checked;
   userid;
+  stateCtrl = new FormControl();
+  users: User[];
   minDate = new Date();
   isReservieren: Boolean = true;
   isAusborgen: Boolean = false;
@@ -115,6 +123,11 @@ export class DialogOverviewExampleDialog implements OnInit {
       this.rentDates = res;
       console.warn(res);
     });
+    this.http.getAllStudents().subscribe(res => {
+      this.users = res;
+      console.log(this.users);
+      this.filteredUser = this.stateCtrl.valueChanges.pipe(startWith(''), map(user => user ? this._filterUser(user) : this.users.slice()));
+    });
   }
 
 
@@ -122,29 +135,16 @@ export class DialogOverviewExampleDialog implements OnInit {
     this.toDate = this.datepipe.transform(selectedEndDate, 'dd-MM-yyyy');
     this.fromDate = this.datepipe.transform(selectedBeginnDate, 'dd-MM-yyyy');
     this.serialNumber = serialNumber;
-    // Unique identifier (e.g it150178)
-    this.userid = this.dataservice.sessionUser.username;
+    if (this.checked) {
+      // Unique identifier (e.g it150178)
+      this.userid = this.dataservice.sessionUser.username;
+    }
+    console.log(this.userid);
+    console.log(serialNumber);
     this.http.rentEquipment(this.userid, serialNumber, this.fromDate, this.toDate).subscribe();
     this.snackbar.open('Eine Anfrage wurde an den Lehrer geschickt!', 'Ok', {duration: 3000});
     this.dialogRef.close();
   }
-
-  /*
-      somethingChanged(e): void {
-         // this.selectedBeginnDate = e.value;
-          this.selectedEndDate = this.selectedBeginnDate > this.selectedEndDate ? this.selectedBeginnDate : this.selectedEndDate;
-
-          if (this.selectedBeginnDate = this.minDate) {
-              this.isAusborgen = true;
-              this.isReservieren = false;
-          } else {
-              this.isAusborgen = false;
-              this.isReservieren = true;
-          }
-
-      }
-  */
-
 
   choosePhotoPath(equ: Equipment): any {
     let temp;
@@ -173,16 +173,47 @@ export class DialogOverviewExampleDialog implements OnInit {
     return style;
   }
 
+  private _filterUser(value: string): User[] {
+    const filterValue = value.toLowerCase();
+
+    return this.users.filter(user => user.username.toLowerCase().includes(filterValue));
+
+  }
+
+  somethingChanged(e): void {
+    console.log('somthingChanged');
+    this.selectedEndDate = this.selectedBeginnDate > this.selectedEndDate ? this.selectedBeginnDate : this.selectedEndDate;
+
+    const minDateDay = this.minDate.getDate();
+    const sDateDay = this.selectedBeginnDate.getDate();
+
+    const minDateMonth = this.minDate.getMonth();
+    const sDateMonth = this.selectedBeginnDate.getMonth();
+
+    const minDateYear = this.minDate.getFullYear();
+    const sDateYear = this.selectedBeginnDate.getFullYear();
+
+
+    if (minDateDay === sDateDay && minDateMonth === sDateMonth && minDateYear === sDateYear) {
+      console.log('hallo reser' + this.selectedBeginnDate);
+      this.isReservieren = false;
+      this.isAusborgen = true;
+    } else {
+      this.isReservieren = true;
+      this.isAusborgen = false;
+    }
+  }
+
   myFilter = (d: Date): boolean => {
     const day = d.getDay();
     // Prevent Saturday and Sunday
-    this.rentDates.forEach(date => {
-      if (d >= new Date(date['fromdate']) && d <= new Date(date['todate'])) {
-        return false;
-      } else if (day !== 0 && day !== 6) {
-        return true;
-      }
-    });
+    /* this.rentDates.forEach(date => {
+         if(d >= new Date(date['fromdate']) && d <= new Date(date['todate'])){
+             return false;
+         }else if(day !== 0 && day !== 6){
+             return true;
+         }
+     });*/
     return day !== 0 && day !== 6;
   };
 

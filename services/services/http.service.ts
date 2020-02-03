@@ -98,7 +98,12 @@ export class HttpService {
     return this.http.get(environment.apiUrl + 'entlehnung/getSingleEntlehnung/' + id);
   }
 
-  confirmEntlehnung(id: number): any{
+  confirmEntlehnung(id: number): any {
     return this.http.get(environment.apiUrl + 'entlehnung/confirmEntlehnung/' + id);
+  }
+
+  // Alle Schüler (it-Nummer und Vor- und Nachname)
+  getAllStudents() {
+    return this.http.get(environment.apiUrl + 'users/getAllStudents');
   }
 }
